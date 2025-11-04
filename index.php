@@ -131,8 +131,70 @@
 
   <!-- Yeni Ürünler -->
   <section id="products" class="container my-5">
-    <h2 class="mb-4 fw-bold text-center">Yeni Ürünler</h2>
-    <div class="row" id="productList"></div>
+    <div class="container my-5">
+      <h2 class="mb-4">Yeni Ürünler</h2>
+      <div class="row g-4">
+        <!-- Ürün Kartı -->
+        <div class="col-md-4 col-sm-6">
+          <div class="card h-100 shadow-sm">
+            <img src="img/headphone.jpeg" class="card-img-top" alt="Ürün Görseli">
+            <div class="card-body">
+              <h5 class="card-title">Kablosuz Kulaklık</h5>
+              <p class="card-text text-muted">Kablosuz</p>
+              <p class="fw-bold fs-5 mb-3">₺249,90</p>
+              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aynı yapıyı çoğalt -->
+        <div class="col-md-4 col-sm-6">
+          <div class="card h-100 shadow-sm">
+            <img src="img/tshirt.jpeg" class="card-img-top" alt="Ürün Görseli">
+            <div class="card-body">
+              <h5 class="card-title">T-Shirt</h5>
+              <p class="card-text text-muted">Sade siyah t-shirt</p>
+              <p class="fw-bold fs-5 mb-3">₺130,90</p>
+              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="card h-100 shadow-sm">
+            <img src="img/mug.jpeg" class="card-img-top" alt="Ürün Görseli">
+            <div class="card-body">
+              <h5 class="card-title">Bardak</h5>
+              <p class="card-text text-muted">Cam bardak su içilir</p>
+              <p class="fw-bold fs-5 mb-3">₺299,90</p>
+              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="card h-100 shadow-sm">
+            <img src="img/pillow.jpeg" class="card-img-top" alt="Ürün Görseli">
+            <div class="card-body">
+              <h5 class="card-title">Yastık</h5>
+              <p class="card-text text-muted">Yumuşak yastık</p>
+              <p class="fw-bold fs-5 mb-3">₺99,90</p>
+              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="card h-100 shadow-sm">
+            <img src="img/sunglasses.webp" class="card-img-top" alt="Ürün Görseli">
+            <div class="card-body">
+              <h5 class="card-title">Güneş Gözlüğü</h5>
+              <p class="card-text text-muted">Gözünüzü güneşten koruyun</p>
+              <p class="fw-bold fs-5 mb-3">₺399,90</p>
+              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- Footer -->
