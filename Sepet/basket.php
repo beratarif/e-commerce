@@ -95,68 +95,48 @@
       </div>
     </div>
   </div>
-
   <script>
-    const cartContainer = document.getElementById("cart-items");
-    const subtotalEl = document.getElementById("subtotal");
-    const totalEl = document.getElementById("total");
-    const shipping = 50;
+    async function loadCart() {
+      const res = await fetch("backend/cart.php");
+      const items = await res.json();
 
-    function loadCart() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cartContainer.innerHTML = "";
-
-      if (cart.length === 0) {
-        cartContainer.innerHTML =
-          '<p class="text-muted text-center">Sepetiniz boş.</p>';
-        subtotalEl.textContent = "₺0";
-        totalEl.textContent = "₺" + shipping;
-        return;
-      }
+      const container = document.getElementById("cart-items");
+      container.innerHTML = "";
 
       let subtotal = 0;
 
-      cart.forEach((item, index) => {
-        subtotal += item.price * item.quantity;
+      items.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
 
-        const div = document.createElement("div");
-        div.className =
-          "list-group-item d-flex justify-content-between align-items-center";
-
-        div.innerHTML = `
-            <div class="d-flex align-items-center">
-              <img src="${item.image}" width="80" class="rounded me-3" alt="${item.name}" />
-              <div>
-                <h5 class="mb-1">${item.name}</h5>
-                <p class="mb-1 text-muted">Fiyat: ₺${item.price}</p>
-                <div class="btn-group btn-group-sm" role="group">
-                  <button class="btn btn-outline-secondary" onclick="updateQuantity(${index}, -1)">-</button>
-                  <button class="btn btn-outline-secondary disabled">${item.quantity}</button>
-                  <button class="btn btn-outline-secondary" onclick="updateQuantity(${index}, 1)">+</button>
-                </div>
-              </div>
-            </div>
-            <button class="btn btn-sm btn-outline-danger" onclick="removeItem(${index})">Sil</button>
-          `;
-        cartContainer.appendChild(div);
+        container.innerHTML += `
+  <div class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      <img src="${item.image}" width="50" class="me-2" />
+      ${item.name}
+    </div>
+    <div>
+      <input type="number" value="${item.quantity}" min="1" class="form-control d-inline w-25 me-2"
+        onchange="updateQuantity(${item.cart_id}, this.value)">
+      ₺${itemTotal.toFixed(2)}
+    </div>
+  </div>
+  `;
       });
 
-      subtotalEl.textContent = "₺" + subtotal;
-      totalEl.textContent = "₺" + (subtotal + shipping);
+      document.getElementById("subtotal").textContent = `₺${subtotal.toFixed(2)}`;
+      const total = subtotal + 50;
+      document.getElementById("total").textContent = `₺${total.toFixed(2)}`;
     }
 
-    function updateQuantity(index, change) {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart[index].quantity += change;
-      if (cart[index].quantity <= 0) cart.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      loadCart();
-    }
-
-    function removeItem(index) {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
+    async function updateQuantity(cart_id, quantity) {
+      await fetch("backend/update_cart.php", {
+        method: "POST",
+        body: JSON.stringify({
+          cart_id,
+          quantity
+        }),
+      });
       loadCart();
     }
 

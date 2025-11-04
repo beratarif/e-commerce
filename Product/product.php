@@ -47,12 +47,12 @@
                 <?php echo htmlspecialchars($kullanici['ad_soyad']); ?>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item text-danger" href="../global backend/logout.php?hangi_cikis=normal">Çıkış Yap</a></li>
+                <li><a class="dropdown-item text-danger" href="../LoginRegister/backend/logout.php">Çıkış Yap</a></li>
               </ul>
             </li>
           <?php else: ?>
             <li class="nav-item">
-              <a href="LoginRegister/index.html" class="nav-link">Giriş</a>
+              <a href="../LoginRegister/index.html" class="nav-link">Giriş</a>
             </li>
           <?php endif; ?>
         </ul>
@@ -66,59 +66,56 @@
   </div>
 
   <script>
-    const products = [{
-        id: 1,
-        name: "Kablosuz Kulaklık",
-        price: 750,
-        image: "../img/headphone.jpeg",
-      },
-      {
-        id: 2,
-        name: "Akıllı Saat",
-        price: 1250,
-        image: "../img/mug.jpeg",
-      },
-      {
-        id: 3,
-        name: "Güneş Gözlüğü",
-        price: 550,
-        image: "../img/sunglasses.webp",
-      },
-    ];
-
     const list = document.getElementById("product-list");
-    list.innerHTML = products
-      .map(
-        (p) => `
-        <div class="col-md-4 mb-4">
-          <div class="card p-3 text-center">
-            <img src="${p.image}" class="card-img-top mb-2" alt="${p.name}">
-            <h5>${p.name}</h5>
-            <p>₺${p.price}</p>
-            <button class="btn btn-primary" onclick="addToCart(${p.id})">Sepete Ekle</button>
+
+    // Backend'den ürünleri çek
+    async function loadProducts() {
+      try {
+        const res = await fetch("../backend/api/urunler.php");
+        const data = await res.json();
+
+        list.innerHTML = data.map(p => `
+          <div class="col-md-4 mb-4">
+            <div class="card p-3 text-center">
+              <img src="${p.image}" class="card-img-top mb-2" alt="${p.name}">
+              <h5>${p.name}</h5>
+              <p>₺${p.price}</p>
+              <button class="btn btn-primary" onclick="addToCart(${p.id})">Sepete Ekle</button>
+            </div>
           </div>
-        </div>
-      `
-      )
-      .join("");
-
-    function addToCart(id) {
-      const product = products.find((p) => p.id === id);
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-      const existing = cart.find((item) => item.id === id);
-      if (existing) {
-        existing.quantity++;
-      } else {
-        cart.push({
-          ...product,
-          quantity: 1
-        });
+        `).join("");
+      } catch (err) {
+        list.innerHTML = `<p class="text-danger text-center">Ürünler yüklenemedi.</p>`;
+        console.error(err);
       }
-
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert(`${product.name} sepete eklendi.`);
     }
+
+    // Sepete ekleme işlemi artık backend'e istek atıyor
+    async function addToCart(id) {
+      try {
+        const res = await fetch("../backend/api/sepet_ekle.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            product_id: id
+          })
+        });
+
+        const result = await res.json();
+        if (result.success) {
+          alert("Ürün sepete eklendi!");
+        } else {
+          alert("Sepete eklenirken hata oluştu.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Bağlantı hatası.");
+      }
+    }
+
+    loadProducts();
   </script>
 </body>
 
