@@ -91,6 +91,10 @@
                 <?php echo htmlspecialchars($kullanici['ad_soyad']); ?>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item text-primary" href="Profil/index.php">Profil</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li><a class="dropdown-item text-danger" href="./LoginRegister/backend/logout.php">Çıkış Yap</a></li>
               </ul>
             </li>
