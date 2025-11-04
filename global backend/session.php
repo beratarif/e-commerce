@@ -7,8 +7,11 @@
 
         header('location: ../../index.php');
     }
+    
+    function CikisYap() {
+        session_unset();
+        session_destroy();
 
-    function GirisYapAdminSession() {
-        
+        header("location: ../../index.php");
     }
 ?>
