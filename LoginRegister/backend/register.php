@@ -39,9 +39,7 @@ try {
     ]);
 
     // session ve sayfa yönlendirme gibi işlemler
-    GirisYapSession([
-        'ad_soyad' => $ad_soyad
-    ]);
+    GirisYapSession(['ad_soyad' => $ad_soyad]);
 } catch (PDOException $ex) {
     die('kayıtol hatası: ' . $ex->getMessage());
 }

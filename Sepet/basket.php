@@ -36,7 +36,6 @@
           <li class="nav-item">
             <a class="nav-link" href="basket.php">Sepet</a>
           </li>
-
           <?php if ($giris_yapildi): ?>
             <li class="nav-item dropdown">
               <a
@@ -48,7 +47,7 @@
                 <?php echo htmlspecialchars($kullanici['ad_soyad']); ?>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item text-danger" href="./LoginRegister/backend/logout.php">Çıkış Yap</a></li>
+                <li><a class="dropdown-item text-danger" href="../LoginRegister/backend/logout.php">Çıkış Yap</a></li>
               </ul>
             </li>
           <?php else: ?>
