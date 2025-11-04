@@ -1,3 +1,5 @@
+<?php require_once '../global backend/anyadminpage.php'; ?>
+
 <!DOCTYPE html>
 <html lang="tr">
   <head>
@@ -33,7 +35,11 @@
           Sipariş Durumu
         </button>
         <button id="logoutBtn" class="btn btn-outline-light btn-sm">
-          Çıkış Yap
+          <?php if ($giris_yapildi): ?>
+            <?php echo $yetkili['eposta']; ?>
+          <?php else: ?>
+            Çıkış Yap
+          <?php endif; ?>
         </button>
       </div>
     </nav>

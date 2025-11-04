@@ -9,10 +9,10 @@
     }
 
     function GirisYapAdminSession($admin) {
-        $_SESSION['admin_giris_yapildi'] = true;
-        $_SESSION['admin'] = $admin;
+        $_SESSION['yetkili_giris_yapildi'] = true;
+        $_SESSION['yetkili'] = $admin;
 
-        header('location: ../admin/dashboard.html');
+        header('location: ../dashboard.php');
     }
     
     function CikisYap() {
