@@ -1,3 +1,5 @@
+<?php require_once '../global backend/anypage.php'; ?>
+
 <!DOCTYPE html>
 <html lang="tr">
   <head>
@@ -34,7 +36,13 @@
               <a class="nav-link" href="../Sepet/basket.html">Sepet</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../LoginRegister/index.html">Giriş</a>
+              <a class="nav-link" href="LoginRegister/index.html">
+                <?php if ($giris_yapildi): ?>
+                  <?php echo $kullanici['ad_soyad']; ?>
+                <?php else: ?>
+                  Giriş
+                <?php endif; ?>
+              </a>
             </li>
           </ul>
         </div>
