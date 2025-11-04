@@ -10,11 +10,10 @@
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <scrip src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
-  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg bg-light border-bottom">
     <div class="container">
       <a class="navbar-brand fw-bold" href="../index.php">Mağazam</a>
@@ -95,53 +94,6 @@
       </div>
     </div>
   </div>
-  <script>
-    async function loadCart() {
-      const res = await fetch("backend/cart.php");
-      const items = await res.json();
-
-      const container = document.getElementById("cart-items");
-      container.innerHTML = "";
-
-      let subtotal = 0;
-
-      items.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        subtotal += itemTotal;
-
-        container.innerHTML += `
-  <div class="list-group-item d-flex justify-content-between align-items-center">
-    <div>
-      <img src="${item.image}" width="50" class="me-2" />
-      ${item.name}
-    </div>
-    <div>
-      <input type="number" value="${item.quantity}" min="1" class="form-control d-inline w-25 me-2"
-        onchange="updateQuantity(${item.cart_id}, this.value)">
-      ₺${itemTotal.toFixed(2)}
-    </div>
-  </div>
-  `;
-      });
-
-      document.getElementById("subtotal").textContent = `₺${subtotal.toFixed(2)}`;
-      const total = subtotal + 50;
-      document.getElementById("total").textContent = `₺${total.toFixed(2)}`;
-    }
-
-    async function updateQuantity(cart_id, quantity) {
-      await fetch("backend/update_cart.php", {
-        method: "POST",
-        body: JSON.stringify({
-          cart_id,
-          quantity
-        }),
-      });
-      loadCart();
-    }
-
-    loadCart();
-  </script>
 </body>
 
 </html>
