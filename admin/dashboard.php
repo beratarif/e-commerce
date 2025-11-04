@@ -1,4 +1,9 @@
-<?php require_once '../global backend/anyadminpage.php'; ?>
+<?php 
+require_once '../global backend/anyadminpage.php'; 
+
+if (!$giris_yapildi)
+    header("location: ./index.html");
+?>
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -40,12 +45,12 @@
             <?php echo htmlspecialchars($yetkili['eposta']); ?>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item text-danger" href="Logout/logout.php">Çıkış Yap</a></li>
+            <li><a class="dropdown-item text-danger" href="../global backend/logout.php?hangi_cikis=yetkili">Çıkış Yap</a></li>
           </ul>
         </div>
       <?php else: ?>
         <button
-          onclick="window.location.href='LoginRegister/index.html'"
+          onclick="window.location.href='./index.html'"
           class="btn btn-outline-light btn-sm">
           Giriş Yap
         </button>

@@ -95,12 +95,12 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-danger" href="./LoginRegister/backend/logout.php">Çıkış Yap</a></li>
+                <li><a class="dropdown-item text-danger" href="./global backend/logout.php?hangi_cikis=normal">Çıkış Yap</a></li>
               </ul>
             </li>
           <?php else: ?>
             <li class="nav-item">
-              <a href="LoginRegister/index.html" class="nav-link">Giriş</a>
+              <a href="./LoginRegister/index.php" class="nav-link">Giriş</a>
             </li>
           <?php endif; ?>
         </ul>
