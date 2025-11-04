@@ -50,6 +50,7 @@
     </style>
 </head>
 <body>
+  
   <div class="profile-card text-center">
     <img src="" alt="Profil Fotoğrafı" class="avatar mb-3"/>
     <h4>Kullanıcı adı</h4>  <!--Giriş Yapılan Kullanıcı Adı Yazılacak-->

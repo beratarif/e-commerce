@@ -53,6 +53,14 @@
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
     }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: contain;
+      /* resim orantılı küçülür, boşluk kalabilir */
+      background-color: #f8f9fa;
+      /* arka plan boş kalırsa hoş durur */
+    }
   </style>
 </head>
 

@@ -12,12 +12,22 @@
     rel="stylesheet" />
   <scrip src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
+
+    <style>
+      .card-img-top {
+        height: 200px;
+        object-fit: contain;
+        /* resim orantılı küçülür, boşluk kalabilir */
+        background-color: #f8f9fa;
+        /* arka plan boş kalırsa hoş durur */
+      }
+    </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg bg-light border-bottom">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="../index.php">Mağazam</a>
+      <a class="navbar-brand fw-bold" href="index.php">Mağazam</a>
       <button
         class="navbar-toggler"
         data-bs-toggle="collapse"
@@ -36,6 +46,7 @@
           <li class="nav-item">
             <a class="nav-link" href="basket.php">Sepet</a>
           </li>
+
           <?php if ($giris_yapildi): ?>
             <li class="nav-item dropdown">
               <a
@@ -47,12 +58,16 @@
                 <?php echo htmlspecialchars($kullanici['ad_soyad']); ?>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item text-primary" href="../Profil/index.php">Profil</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li><a class="dropdown-item text-danger" href="../global backend/logout.php?hangi_cikis=normal">Çıkış Yap</a></li>
               </ul>
             </li>
           <?php else: ?>
             <li class="nav-item">
-              <a href="LoginRegister/index.html" class="nav-link">Giriş</a>
+              <a href="./LoginRegister/index.php" class="nav-link">Giriş</a>
             </li>
           <?php endif; ?>
         </ul>
