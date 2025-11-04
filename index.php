@@ -60,7 +60,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-light border-bottom">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="Product/product.html">Mağazam</a>
+      <a class="navbar-brand fw-bold" href="index.php">Mağazam</a>
       <button
         class="navbar-toggler"
         data-bs-toggle="collapse"
@@ -71,13 +71,13 @@
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Anasayfa</a>
+            <a class="nav-link" href="index.php">Anasayfa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Product/product.html">Ürünler</a>
+            <a class="nav-link" href="Product/product.php">Ürünler</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Sepet/basket.html">Sepet</a>
+            <a class="nav-link" href="Sepet/basket.php">Sepet</a>
           </li>
 
           <?php if ($giris_yapildi): ?>
