@@ -5,7 +5,7 @@
         $_SESSION['giris_yapildi'] = true;
         $_SESSION['kullanici'] = $kullanici;
 
-        header('location: ../index.php');
+        header('location: ../../index.php');
     }
 
     function GirisYapAdminSession() {

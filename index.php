@@ -45,6 +45,14 @@
       text-align: center;
       margin-top: 4rem;
     }
+
+    .navbar .nav-link.dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
   </style>
 </head>
 
@@ -61,7 +69,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Anasayfa</a>
           </li>
@@ -71,31 +79,34 @@
           <li class="nav-item">
             <a class="nav-link" href="Sepet/basket.html">Sepet</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="LoginRegister/index.html">
-              <?php if ($giris_yapildi): ?>
-          <li class="nav-item dropdown">
-            <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="nav-link dropdown-toggle">
-              <?php echo htmlspecialchars($kullanici['ad_soyad']); ?>
-            </a>
-            <ul class="dropdown-menu dropdown-manu-end">
-              <li><a href="" class="dropdown-item">Profil</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a href="" class="dropdown-item text-danger">Çıkış Yap</a></li>
-            </ul>
-          </li>
-        <?php else: ?>
-          <li class="nav-item">
-            <a href="LoginRegister/index.html" class="nav-link">Giriş</a>
-          </li>
-        <?php endif; ?>
-        </a>
-        </li>
+
+          <?php if ($giris_yapildi): ?>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-uppercase fw-semibold"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <?php echo htmlspecialchars($kullanici['ad_soyad']); ?>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="Profil/index.html">Profil</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item text-danger" href="Logout/logout.php">Çıkış Yap</a></li>
+              </ul>
+            </li>
+          <?php else: ?>
+            <li class="nav-item">
+              <a href="LoginRegister/index.html" class="nav-link">Giriş</a>
+            </li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
   </nav>
-
   <!-- Hero -->
   <section class="hero my-4">
     <div class="container">
