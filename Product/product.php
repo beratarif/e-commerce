@@ -6,19 +6,19 @@ $kategori = $_GET['kategori'];
 
 function OncekiSayfa($guncel_sayfa)
 {
-  $onceki_sayfa = $guncel_sayfa - 1;
-
-  if ($onceki_sayfa < 1) {
-    $onceki_sayfa = 1;
-  }
-
-  return $onceki_sayfa;
+  return $guncel_sayfa - 1;
 }
 
 function SonrakiSayfa($guncel_sayfa)
 {
   return $guncel_sayfa + 1;
 }
+
+function OncekiSayfayaGidilebilirMi($onceki_sayfa)
+{
+  return $onceki_sayfa <= 0;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -107,17 +107,15 @@ function SonrakiSayfa($guncel_sayfa)
 
         <!-- Sayfa geçişleri -->
         <div class="d-flex justify-content-center align-items-center mt-4">
-          <a
-            id="prevBtn"
+          <a id="prevBtn"
             href="product.php?sayfa=<?php echo OncekiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
-            class="btn btn-outline-primary me-2">
+            class="btn btn-outline-primary me-2 <?php if(OncekiSayfayaGidilebilirMi(OncekiSayfa($guncel_sayfa))): ?> disabled <?php endif; ?>">
             <i class="fas fa-arrow-left"></i>
           </a>
 
           <span class="mx-2">Sayfa <?php echo $guncel_sayfa; ?></span>
 
-          <a
-            id="nextBtn"
+          <a id="nextBtn"
             href="product.php?sayfa=<?php echo SonrakiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
             class="btn btn-outline-primary ms-2">
             <i class="fas fa-arrow-right"></i>
@@ -125,27 +123,14 @@ function SonrakiSayfa($guncel_sayfa)
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        urunGetir(<?php echo $_GET['sayfa'] ?>, '<?php echo $_GET['kategori'] ?>');
-      });
-    </script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      urunGetir(<?php echo $_GET['sayfa'] ?>, '<?php echo $_GET['kategori'] ?>');
+    });
+  </script>
 </body>
-
-<!-- <a
-  class="btn btn-outline-primary me-2 <?php echo ($guncel_sayfa <= 1) ? 'disabled' : ''; ?>"
-  href="<?php echo ($guncel_sayfa <= 1) ? '#' : 'product.php?sayfa=' . OncekiSayfa($guncel_sayfa) . '&kategori=' . $kategori; ?>"
->
-  <i class="fas fa-arrow-left"></i>
-</a>
-
-<a
-  class="btn btn-outline-primary ms-2 <?php echo ($guncel_sayfa >= $toplam_sayfa) ? 'disabled' : ''; ?>"
-  href="<?php echo ($guncel_sayfa >= $toplam_sayfa) ? '#' : 'product.php?sayfa=' . SonrakiSayfa($guncel_sayfa) . '&kategori=' . $kategori; ?>"
->
-  <i class="fas fa-arrow-right"></i>
-</a> -->
 
 </html>
