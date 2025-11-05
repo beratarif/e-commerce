@@ -1,4 +1,4 @@
-<?php require_once 'global backend/anypage.php'; ?>
+<?php require_once 'backend/page.php'; ?>
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -8,9 +8,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mağazam</title>
 
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <style>
@@ -69,10 +67,7 @@
   <nav class="navbar navbar-expand-lg bg-light border-bottom">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.php">Mağazam</a>
-      <button
-        class="navbar-toggler"
-        data-bs-toggle="collapse"
-        data-bs-target="#navMenu">
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -90,25 +85,22 @@
 
           <?php if ($giris_yapildi): ?>
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle text-uppercase fw-semibold"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false">
+              <a class="nav-link dropdown-toggle text-uppercase fw-semibold" href="#" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
                 <?php echo htmlspecialchars($kullanici['ad_soyad']); ?>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item text-primary" href="Profil/index.php">Profil</a></li>
+                <li><a class="dropdown-item text-primary" href="Profile/index.php">Profil</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-danger" href="./global backend/logout.php?hangi_cikis=normal">Çıkış Yap</a></li>
+                <li><a class="dropdown-item text-danger" href="backend/logout.php?hangi_cikis=normal">Çıkış
+                    Yap</a></li>
               </ul>
             </li>
           <?php else: ?>
             <li class="nav-item">
-              <a href="./LoginRegister/index.php" class="nav-link">Giriş</a>
+              <a href="LoginRegister/index.php" class="nav-link">Giriş</a>
             </li>
           <?php endif; ?>
         </ul>
@@ -130,10 +122,10 @@
   <section class="container text-center my-5">
     <h2 class="mb-4 fw-bold">Kategoriler</h2>
     <div class="d-flex flex-wrap justify-content-center gap-3">
-      <a href="./Product/product.php?kategori=elektronik" class="btn btn-outline-primary category-btn">Elektronik</a>
-      <a href="./Product/product.php?kategori=giyim" class="btn btn-outline-primary category-btn">Giyim</a>
-      <a href="./Product/product.php?kategori=aksesuar" class="btn btn-outline-primary category-btn">Aksesuar</a>
-      <a href="./Product/product.php?kategori=ev_yasam" class="btn btn-outline-primary category-btn">Ev & Yaşam</a>
+      <a href="Product/product.php?kategori=elektronik" class="btn btn-outline-primary category-btn">Elektronik</a>
+      <a href="Product/product.php?kategori=giyim" class="btn btn-outline-primary category-btn">Giyim</a>
+      <a href="Product/product.php?kategori=aksesuar" class="btn btn-outline-primary category-btn">Aksesuar</a>
+      <a href="Product/product.php?kategori=ev_yasam" class="btn btn-outline-primary category-btn">Ev & Yaşam</a>
     </div>
   </section>
 
@@ -141,65 +133,8 @@
   <section id="products" class="container my-5">
     <div class="container my-5">
       <h2 class="mb-4">Yeni Ürünler</h2>
-      <div class="row g-4">
-        <!-- Ürün Kartı -->
-        <div class="col-md-4 col-sm-6">
-          <div class="card h-100 shadow-sm">
-            <img src="img/headphone.jpeg" class="card-img-top" alt="Ürün Görseli">
-            <div class="card-body">
-              <h5 class="card-title">Kablosuz Kulaklık</h5>
-              <p class="card-text text-muted">Kablosuz</p>
-              <p class="fw-bold fs-5 mb-3">₺249,90</p>
-              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Aynı yapıyı çoğalt -->
-        <div class="col-md-4 col-sm-6">
-          <div class="card h-100 shadow-sm">
-            <img src="img/tshirt.jpeg" class="card-img-top" alt="Ürün Görseli">
-            <div class="card-body">
-              <h5 class="card-title">T-Shirt</h5>
-              <p class="card-text text-muted">Sade siyah t-shirt</p>
-              <p class="fw-bold fs-5 mb-3">₺130,90</p>
-              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="card h-100 shadow-sm">
-            <img src="img/mug.jpeg" class="card-img-top" alt="Ürün Görseli">
-            <div class="card-body">
-              <h5 class="card-title">Bardak</h5>
-              <p class="card-text text-muted">Cam bardak su içilir</p>
-              <p class="fw-bold fs-5 mb-3">₺299,90</p>
-              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="card h-100 shadow-sm">
-            <img src="img/pillow.jpeg" class="card-img-top" alt="Ürün Görseli">
-            <div class="card-body">
-              <h5 class="card-title">Yastık</h5>
-              <p class="card-text text-muted">Yumuşak yastık</p>
-              <p class="fw-bold fs-5 mb-3">₺99,90</p>
-              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="card h-100 shadow-sm">
-            <img src="img/sunglasses.webp" class="card-img-top" alt="Ürün Görseli">
-            <div class="card-body">
-              <h5 class="card-title">Güneş Gözlüğü</h5>
-              <p class="card-text text-muted">Gözünüzü güneşten koruyun</p>
-              <p class="fw-bold fs-5 mb-3">₺399,90</p>
-              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
-            </div>
-          </div>
-        </div>
+      <div id="product-holder" class="row g-4">
+        <!-- products are here -->
       </div>
     </div>
 
@@ -210,8 +145,7 @@
     <p>© 2025 Mağazam. Tüm hakları saklıdır.</p>
   </footer>
 
-  <script src="js/product.js"></script>
-  <script src="js/app.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

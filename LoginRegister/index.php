@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <!-- Giriş Formu -->
-    <form action="backend/login.php" method="post" class="form login-form active">
+    <form action="../backend/login.php" method="post" class="form login-form active">
       <h2>Giriş Yap</h2>
       <input type="email" placeholder="E-posta" name="eposta" required>
       <input type="password" placeholder="Şifre" name="sifre" required>
@@ -18,7 +18,7 @@
     </form>
 
     <!-- Kayıt Formu -->
-    <form action="backend/register.php"method="post" class="form register-form">
+    <form action="../backend/register.php"method="post" class="form register-form">
       <h2>Kayıt Ol</h2>
       <input type="text" placeholder="Ad Soyad" name="ad_soyad" required>
       <input type="email" placeholder="E-posta" name="eposta" required>

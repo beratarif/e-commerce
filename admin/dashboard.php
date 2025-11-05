@@ -1,8 +1,9 @@
-<?php 
-require_once '../global backend/anyadminpage.php'; 
+<?php
+require_once '../backend/admin_page.php';
 
-if (!$giris_yapildi)
-    header("location: ./index.html");
+if (!$giris_yapildi) {
+  header("location: index.html");
+}
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +46,7 @@ if (!$giris_yapildi)
             <?php echo htmlspecialchars($yetkili['eposta']); ?>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item text-danger" href="../global backend/logout.php?hangi_cikis=yetkili">Çıkış Yap</a></li>
+            <li><a class="dropdown-item text-danger" href="../backend/logout.php?hangi_cikis=yetkili">Çıkış Yap</a></li>
           </ul>
         </div>
       <?php else: ?>

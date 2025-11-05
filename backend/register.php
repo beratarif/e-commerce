@@ -1,6 +1,6 @@
 <?php
-require_once '../../global backend/db.php';
-require_once '../../global backend/session.php';
+require_once 'db.php';
+require_once 'session.php';
 
 session_start();
 

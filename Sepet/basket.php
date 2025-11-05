@@ -1,4 +1,4 @@
-<?php require_once '../global backend/anypage.php'; ?>
+<?php require_once '../backend/page.php'; ?>
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -8,9 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sepetim</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <scrip src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-    </script>
-
+  <scrip src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
       .card-img-top {
         height: 200px;
@@ -23,9 +21,9 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-light border-bottom">
+<nav class="navbar navbar-expand-lg bg-light border-bottom">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.php">Mağazam</a>
+      <a class="navbar-brand fw-bold" href="../index.php">Mağazam</a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,11 +47,11 @@
                 <?php echo htmlspecialchars($kullanici['ad_soyad']); ?>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item text-primary" href="../Profil/index.php">Profil</a></li>
+                <li><a class="dropdown-item text-primary" href="../Profile/index.php">Profil</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-danger" href="../global backend/logout.php?hangi_cikis=normal">Çıkış
+                <li><a class="dropdown-item text-danger" href="../backend/logout.php?hangi_cikis=normal">Çıkış
                     Yap</a></li>
               </ul>
             </li>
@@ -66,7 +64,6 @@
       </div>
     </div>
   </nav>
-
   <!-- SEPET -->
   <div class="container my-5">
     <h2 class="mb-4">🛒 Sepetim</h2>

@@ -1,4 +1,4 @@
-<?php require_once '../global backend/anypage.php'; ?>
+<?php require_once '../backend/page.php'; ?>
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -57,7 +57,7 @@
                 <?php echo htmlspecialchars($kullanici['ad_soyad']); ?>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item text-danger" href="../LoginRegister/backend/logout.php">Çıkış Yap</a></li>
+                <li><a class="dropdown-item text-danger" href="../backend/logout.php?hangi_cikis=normal">Çıkış Yap</a></li>
               </ul>
             </li>
           <?php else: ?>
