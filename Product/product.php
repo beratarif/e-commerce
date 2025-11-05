@@ -1,4 +1,22 @@
-<?php require_once '../backend/page.php'; ?>
+<?php 
+require_once '../backend/page.php';
+
+$sayfa = $_GET['sayfa'];
+$kategori = $_GET['kategori'];
+
+function BirSonrakiSayfayiGetir($guncelSayfa) {
+  $oncekiSayfa = $guncelSayfa + 1;
+
+  if ($oncekiSayfa < 0)
+    $oncekiSayfa = 0;
+
+  return $oncekiSayfa;
+}
+
+function BirOncekiSayfayiGetir($guncelSayfa) {
+  return $guncelSayfa - 1;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -9,6 +27,7 @@
   <title>Ürünler</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
     .card-img-top {
@@ -31,11 +50,11 @@
 
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item">
+          <li class="nav-item"> 
             <a class="nav-link" href="../index.php">Anasayfa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../Product/product.php?sayfa=1&kategori=yok">Ürünler</a>
+            <a class="nav-link" href="product.php?sayfa=1&kategori=yok">Ürünler</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../Sepet/basket.php">Sepet</a>
@@ -85,12 +104,12 @@
 
         <!-- Sayfa geçişleri -->
         <div class="d-flex justify-content-center align-items-center mt-4">
-          <a class="btn btn-outline-primary me-2">
-            <i class="bi bi-arrow-left"></i> Önceki
+          <a href="product.php?sayfa=<?php echo BirOncekiSayfayiGetir($guncelSayfa); ?>&kategori=<?php echo $kategori ?>" class="btn btn-outline-primary me-2">
+            <i class="	fas fa-arrow-left"></i> 
           </a>
-          <span class="mx-2">Sayfa 1 / 3</span>
-          <a class="btn btn-outline-primary ms-2">
-            Sonraki <i class="bi bi-arrow-right"></i>
+          <span class="mx-2">Sayfa <?php echo $sayfa; ?></span>
+          <a href="product.php?sayfa=<?php echo BirSonrakiSayfayiGetir($guncelSayfa); ?>&kategori=<?php echo $kategori ?>" class="btn btn-outline-primary ms-2">
+            <i class="fas fa-arrow-right"></i>
           </a>
         </div>
       </div>
