@@ -62,6 +62,7 @@
   </style>
 </head>
 
+
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-light border-bottom">
@@ -144,6 +145,8 @@
   <footer>
     <p>© 2025 Mağazam. Tüm hakları saklıdır.</p>
   </footer>
+
+  <!-- deneme amaclı -->
 
   <script src="script.js"></script>
 </body>
