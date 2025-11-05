@@ -1,4 +1,4 @@
-<?php  require_once '../backend/page.php'; ?>
+<?php require_once '../backend/page.php'; ?>
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -68,16 +68,31 @@
 
   <div class="container my-5">
     <h2 class="mb-4">🛍 Ürünler</h2>
-    <div id="product-holder" class="row g-4">
-      <!-- Products are here -->
+    <div class="row">
+      <div class="col-lg-3 mb-4">
+        <div class="list-group"> <a href="#" class="list-group-item list-group-item-action active">Tümü</a> <a href="#" class="list-group-item list-group-item-action">Elektronik</a> <a href="#" class="list-group-item list-group-item-action">Giyim</a> <a href="#" class="list-group-item list-group-item-action">Kozmetik</a> <a href="#" class="list-group-item list-group-item-action">Ev & Yaşam</a> </div>
+      </div>
+      <div class="col-lg-9">
+        <div id="product-holder" class="row g-4"> <!-- Products are here --> </div>
+      </div>
     </div>
+    <div class="d-flex justify-content-center align-items-center mt-4">
 
-    <script src="script.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        urunGetir(<?php echo $_GET['sayfa'] ?>, '<?php echo $_GET['kategori'] ?>');
-      });
-    </script>
+      <a class="btn btn-outline-primary me-2"> <i class="bi bi-arrow-left"></i> Önceki </a> <span class="mx-2">Sayfa 1 / 3</span>
+      <a class="btn btn-outline-primary ms-2"> Sonraki
+        <i class="bi bi-arrow-right">
+
+        </i>
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      urunGetir(<?php echo $_GET['sayfa'] ?>, '<?php echo $_GET['kategori'] ?>');
+    });
+  </script>
 </body>
 
 </html>
