@@ -8,20 +8,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sepetim</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <scrip src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-      .card-img-top {
-        height: 200px;
-        object-fit: contain;
-        /* resim orantılı küçülür, boşluk kalabilir */
-        background-color: #f8f9fa;
-        /* arka plan boş kalırsa hoş durur */
-      }
-    </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    .card-img-top {
+      height: 200px;
+      object-fit: contain;
+      /* resim orantılı küçülür, boşluk kalabilir */
+      background-color: #f8f9fa;
+      /* arka plan boş kalırsa hoş durur */
+    }
+  </style>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg bg-light border-bottom">
+  <nav class="navbar navbar-expand-lg bg-light border-bottom">
     <div class="container">
       <a class="navbar-brand fw-bold" href="../index.php">Mağazam</a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
