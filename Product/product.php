@@ -62,7 +62,7 @@
             </li>
           <?php else: ?>
             <li class="nav-item">
-              <a href="../LoginRegister/index.html" class="nav-link">Giriş</a>
+              <a href="../LoginRegister/index.php" class="nav-link">Giriş</a>
             </li>
           <?php endif; ?>
         </ul>
