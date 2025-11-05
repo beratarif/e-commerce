@@ -18,6 +18,14 @@
       background-color: #f8f9fa;
       /* arka plan boş kalırsa hoş durur */
     }
+
+    footer {
+      background: #212529;
+      color: #ccc;
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 4rem;
+    }
   </style>
 </head>
 
@@ -148,6 +156,9 @@
       </div>
     </div>
   </div>
+  <footer>
+    <p>© 2025 Mağazam. Tüm hakları saklıdır.</p>
+  </footer>
 </body>
 
 </html>

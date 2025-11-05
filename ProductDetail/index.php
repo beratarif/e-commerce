@@ -10,6 +10,15 @@
     rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+<style>
+  footer {
+    background: #212529;
+    color: #ccc;
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 4rem;
+  }
+</style>
 
 <body>
   <nav class="navbar navbar-expand-lg bg-light border-bottom">
@@ -127,6 +136,9 @@
       </div>
     </div>
 
+    <footer>
+      <p>© 2025 Mağazam. Tüm hakları saklıdır.</p>
+    </footer>
 
     <script>
       const productList = document.getElementById("productList");
