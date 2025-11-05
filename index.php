@@ -130,10 +130,10 @@
   <section class="container text-center my-5">
     <h2 class="mb-4 fw-bold">Kategoriler</h2>
     <div class="d-flex flex-wrap justify-content-center gap-3">
-      <button class="btn btn-outline-primary category-btn">Elektronik</button>
-      <button class="btn btn-outline-primary category-btn">Giyim</button>
-      <button class="btn btn-outline-primary category-btn">Aksesuar</button>
-      <button class="btn btn-outline-primary category-btn">Ev & Yaşam</button>
+      <a href="./Product/product.php?kategori=elektronik" class="btn btn-outline-primary category-btn">Elektronik</a>
+      <a href="./Product/product.php?kategori=giyim" class="btn btn-outline-primary category-btn">Giyim</a>
+      <a href="./Product/product.php?kategori=aksesuar" class="btn btn-outline-primary category-btn">Aksesuar</a>
+      <a href="./Product/product.php?kategori=ev_yasam" class="btn btn-outline-primary category-btn">Ev & Yaşam</a>
     </div>
   </section>
 
