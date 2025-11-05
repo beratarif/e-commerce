@@ -7,17 +7,15 @@ if (!$giris_yapildi) {
 ?>
 
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Paneli - Dashboard</title>
+  <title>Document</title>
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -59,37 +57,23 @@ if (!$giris_yapildi) {
     </div>
   </nav>
 
-
   <div class="container mt-4">
-    <h3>Dashboard</h3>
-    <div class="row mt-3" id="statsRow">
-      <!-- Box 1 -->
-      <div class="col-md-4 mb-3">
-        <div class="card text-center shadow-sm p-3">
-          <h5 class="card-title">Toplam Kullanıcı</h5>
-          <p class="card-text display-6" id="totalUsers">-</p>
-        </div>
-      </div>
-
-      <!-- Box 2 -->
-      <div class="col-md-4 mb-3">
-        <div class="card text-center shadow-sm p-3">
-          <h5 class="card-title">Toplam Sipariş</h5>
-          <p class="card-text display-6" id="totalOrders">-</p>
-        </div>
-      </div>
-
-      <!-- Box 3 -->
-      <div class="col-md-4 mb-3">
-        <div class="card text-center shadow-sm p-3">
-          <h5 class="card-title">Toplam Gelir</h5>
-          <p class="card-text display-6" id="totalRevenue">-</p>
-        </div>
-      </div>
-    </div>
+    <h3>Siparişler</h3>
+    <table class="table table-bordered align-middle mt-3">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Müşteri</th>
+          <th>Tutar</th>
+          <th>Durum</th>
+          <th>İşlem</th>
+        </tr>
+      </thead>
+      <tbody id="ordersTableBody"></tbody>
+    </table>
   </div>
-
-  <script src="js/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/orders.js"></script>
 </body>
 
 </html>
