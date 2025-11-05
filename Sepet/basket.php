@@ -43,7 +43,7 @@
             <a class="nav-link" href="../index.php">Anasayfa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../Product/product.php">Ürünler</a>
+            <a class="nav-link" href="../Product/product.php?sayfa=1&kategori=yok">Ürünler</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="basket.php">Sepet</a>

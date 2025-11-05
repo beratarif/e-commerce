@@ -1,16 +1,22 @@
-async function urunGetir() {
+function bekle(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function urunGetir(sayfa, kategori) {
     const product_holder = document.getElementById('product-holder');
 
     try {
-        const response = await fetch(`./backend/urun.php?islem=anasayfa`);
+        const response = await fetch(`../backend/urun.php?islem=urunler&sayfa=${sayfa}&kategori=${kategori}`);
         const r = await response.json();
 
         for (const u of r) {
+            await bekle(125);
+
             product_holder.innerHTML +=
                 `
             <div class="col-md-4 col-sm-6">
               <div class="card h-100 shadow-sm">
-                <img src="${u.gorsel}" class="card-img-top" alt="Ürün Görseli">
+                <img src="../${u.gorsel}" class="card-img-top" alt="Ürün Görseli">
                 <div class="card-body">
                   <h5 class="card-title">${u.ad}</h5>
                   <p class="card-text text-muted">${u.aciklama}</p>
@@ -25,7 +31,3 @@ async function urunGetir() {
         console.error(`hata: ${err}`);
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    urunGetir();
-});
