@@ -1,35 +1,37 @@
-function UrunGetir(urunSayisi) {
-      const product_holder = document.getElementById('product-holder');
+function bekle(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-      fetch(`./backend/urun.php?islem=anasayfa`)
-        .then(response => response.json())
-        .then(r => {
-          let preparedProductsHTML = '';
+async function urunGetir() {
+    const product_holder = document.getElementById('product-holder');
 
-          r.forEach(u => {
-            preparedProductsHTML +=
-              `
-          <div class="col-md-4 col-sm-6">
-            <div class="card h-100 shadow-sm">
-              <img src="${u.gorsel}" class="card-img-top" alt="Ürün Görseli">
-              <div class="card-body">
-                <h5 class="card-title">${u.ad}</h5>
-                <p class="card-text text-muted">${u.aciklama}</p>
-                <p class="fw-bold fs-5 mb-3">₺${u.fiyat}</p>
-                <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
+    try {
+        const response = await fetch(`./backend/urun.php?islem=anasayfa`);
+        const r = await response.json();
+
+        for (const u of r) {
+            await bekle(250);
+
+            product_holder.innerHTML +=
+                `
+            <div class="col-md-4 col-sm-6">
+              <div class="card h-100 shadow-sm">
+                <img src="${u.gorsel}" class="card-img-top" alt="Ürün Görseli">
+                <div class="card-body">
+                  <h5 class="card-title">${u.ad}</h5>
+                  <p class="card-text text-muted">${u.aciklama}</p>
+                  <p class="fw-bold fs-5 mb-3">₺${u.fiyat}</p>
+                  <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
+                </div>
               </div>
             </div>
-          </div>
-          `;
-          });
-
-          product_holder.innerHTML = preparedProductsHTML;
-        })
-        .catch(err => {
-          console.error(`hata: ${err}`);
-        });
+            `;
+        }
+    } catch (err) {
+        console.error(`hata: ${err}`);
     }
+}
 
-    document.addEventListener("DOMContentLoaded", () => {
-      UrunGetir(3);
-    });
+document.addEventListener("DOMContentLoaded", () => {
+    urunGetir();
+});
