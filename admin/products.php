@@ -59,7 +59,10 @@ if (!$giris_yapildi) {
 
   <div class="container mt-4">
     <h3>Ürünler</h3>
-    <button class="btn btn-success mb-3" id="addProductBtn">Ürün Ekle</button>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+  Ürün Ekle
+</button>
+
 
     <table class="table table-bordered">
       <thead class="table-dark">
@@ -72,65 +75,38 @@ if (!$giris_yapildi) {
         </tr>
       </thead>
       <tbody id="productsTableBody">
-        <!-- Ürünler buraya JS ile gelecek -->
+        
       </tbody>
     </table>
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="productModal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" action="add_product.php" enctype="multipart/form-data">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle">Ürün Ekle</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"></button>
+          <h5 class="modal-title" id="addProductModalLabel">Yeni Ürün Ekle</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <form id="productForm">
-            <input type="hidden" id="productIndex" />
-            <div class="mb-3">
-              <label class="form-label">Ürün İsmi</label>
-              <input
-                type="text"
-                class="form-control"
-                id="productName"
-                required />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Fiyat</label>
-              <input
-                type="number"
-                class="form-control"
-                id="productPrice"
-                required />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Kategori</label>
-              <input
-                type="text"
-                class="form-control"
-                id="productCategory"
-                required />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Stok</label>
-              <input
-                type="number"
-                class="form-control"
-                id="productStock"
-                required />
-            </div>
-            <button type="submit" class="btn btn-primary">Kaydet</button>
-          </form>
+          <input type="text" name="urun_adi" class="form-control mb-2" placeholder="Ürün Adı" required>
+          <input type="text" name="kategori" class="form-control mb-2" placeholder="Kategori" required>
+          <textarea name="aciklama" class="form-control mb-2" placeholder="Açıklama"></textarea>
+          <input type="number" name="fiyat" class="form-control mb-2" placeholder="Fiyat" required>
+          <input type="file" name="resim" class="form-control mb-2">
         </div>
-      </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Kaydet</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script src="js/products.js"></script>
 </body>
 

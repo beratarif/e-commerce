@@ -4,6 +4,10 @@ require_once '../backend/admin_page.php';
 if (!$giris_yapildi) {
   header("location: index.html");
 }
+
+require_once '../backend/db.php';
+$stmt = $pdo->query("SELECT COUNT(*) AS toplam FROM kullanicilar");
+$toplam = $stmt->fetch(PDO::FETCH_ASSOC)['toplam'];
 ?>
 
 <!DOCTYPE html>
@@ -13,9 +17,7 @@ if (!$giris_yapildi) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Paneli - Dashboard</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <link rel="stylesheet" href="css/style.css" />
@@ -37,12 +39,8 @@ if (!$giris_yapildi) {
       </button>
       <?php if ($giris_yapildi): ?>
         <div class="dropdown">
-          <button
-            class="btn btn-outline-light btn-sm dropdown-toggle fw-semibold"
-            type="button"
-            id="userDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false">
+          <button class="btn btn-outline-light btn-sm dropdown-toggle fw-semibold" type="button" id="userDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
             <?php echo htmlspecialchars($yetkili['eposta']); ?>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -50,9 +48,7 @@ if (!$giris_yapildi) {
           </ul>
         </div>
       <?php else: ?>
-        <button
-          onclick="window.location.href='./index.html'"
-          class="btn btn-outline-light btn-sm">
+        <button onclick="window.location.href='./index.html'" class="btn btn-outline-light btn-sm">
           Giriş Yap
         </button>
       <?php endif; ?>
@@ -67,7 +63,7 @@ if (!$giris_yapildi) {
       <div class="col-md-4 mb-3">
         <div class="card text-center shadow-sm p-3">
           <h5 class="card-title">Toplam Kullanıcı</h5>
-          <p class="card-text display-6" id="totalUsers">-</p>
+          <p class="card-text display-6" id="totalUsers"><?php echo $toplam; ?></p>
         </div>
       </div>
 
