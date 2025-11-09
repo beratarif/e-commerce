@@ -7,15 +7,18 @@ $name = $_POST['productName'] ?? '';
 $price = $_POST['productPrice'] ?? '';
 $category = $_POST['productCategory'] ?? '';
 $stock = $_POST['productStock'] ?? '';
+$img = $_FILES['productImage']['name'] ?? '';
+$desc = $_POST['productDesc'] ?? '';
 
-if (empty($_POST['name']) || empty($_POST['price']) || empty($_POST['category']) || empty($_POST['stock'])) {
-    echo json_encode(["success" => false, "message" => "Tüm alanları doldurun."]);
-    exit;
+if (empty($name) || empty($price) || empty($category) || empty($stock) || empty($desc)) {
+  echo json_encode(["success" => false, "message" => "Tüm alanları doldurun. (test)"]);
+  exit;
 }
 
+
 try {
-  $stmt = $conn->prepare("INSERT INTO urunler (name, price, category, stock) VALUES (?, ?, ?, ?)");
-  $stmt->execute([$name, $price, $category, $stock]);
+  $stmt = $pdo->prepare("INSERT INTO urunler (ad, fiyat, kategori, stock, gorsel, aciklama) VALUES (?, ?, ?, ?,?,?)");
+  $stmt->execute([$name, $price, $category, $stock, $img, $desc]);
   echo json_encode(["success" => true]);
 } catch (PDOException $e) {
   echo json_encode(["success" => false, "message" => $e->getMessage()]);

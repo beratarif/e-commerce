@@ -10,7 +10,7 @@ if (!$id) {
 }
 
 try {
-  $stmt = $conn->prepare("DELETE FROM urunler WHERE id = ?");
+  $stmt = $pdo->prepare("DELETE FROM urunler WHERE id = ?");
   $stmt->execute([$id]);
   echo json_encode(["success" => true]);
 } catch (PDOException $e) {

@@ -1,7 +1,7 @@
 <?php
 require_once "../backend/db.php";
 
-$stmt = $conn->prepare("SELECT * FROM urunler ORDER BY id DESC");
+$stmt = $pdo->prepare("SELECT * FROM urunler ORDER BY id DESC");
 $stmt->execute();
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
