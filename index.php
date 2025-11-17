@@ -1,4 +1,4 @@
-<?php require_once 'backend/page.php'; ?>
+<?php require_once 'backend/kullanici.php'; ?>
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -123,10 +123,12 @@
     <h2 class="mb-4 fw-bold">Kategoriler</h2>
     <div class="d-flex flex-wrap justify-content-center gap-3">
       <a href="Product/product.php?sayfa=1&kategori=yok" class="btn btn-outline-primary category-btn">Tümü</a>
-      <a href="Product/product.php?sayfa=1&kategori=elektronik" class="btn btn-outline-primary category-btn">Elektronik</a>
+      <a href="Product/product.php?sayfa=1&kategori=elektronik"
+        class="btn btn-outline-primary category-btn">Elektronik</a>
       <a href="Product/product.php?sayfa=1&kategori=giyim" class="btn btn-outline-primary category-btn">Giyim</a>
       <a href="Product/product.php?sayfa=1&kategori=aksesuar" class="btn btn-outline-primary category-btn">Aksesuar</a>
-      <a href="Product/product.php?sayfa=1&kategori=ev_yasam" class="btn btn-outline-primary category-btn">Ev & Yaşam</a>
+      <a href="Product/product.php?sayfa=1&kategori=ev_yasam" class="btn btn-outline-primary category-btn">Ev &
+        Yaşam</a>
     </div>
   </section>
 
@@ -146,9 +148,8 @@
     <p>© 2025 Mağazam. Tüm hakları saklıdır.</p>
   </footer>
 
-  <!-- deneme amaclı -->
-
   <script src="script.js"></script>
+
 </body>
 
 </html>

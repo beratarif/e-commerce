@@ -1,6 +1,6 @@
 <?php
-require_once '../backend/page.php';
 require_once '../backend/db.php';
+require_once '../backend/kullanici.php';
 
 $guncel_sayfa = $_GET['sayfa'];
 $kategori = $_GET['kategori'];

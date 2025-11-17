@@ -14,26 +14,39 @@ async function urunGetir() {
               <h5 class="card-title">${u.ad}</h5>
               <p class="card-text text-muted">${u.aciklama}</p>
               <p class="fw-bold fs-5 mb-3">₺${u.fiyat}</p>
-               <button href="#" class="btn btn-primary w-100 sepete-ekle">Sepete Ekle</button>
+
+              <button class="btn btn-primary w-100 sepete-ekle">Sepete Ekle</button>
             </div>
           </div>
         </div>
       `;
+    }
+
+    for (const urunKart of document.querySelectorAll(".product-card")) {
+      urunKart.querySelector(".sepete-ekle").onclick = () => {
+        sepeteEkle(urunKart.dataset.id);
+      };
     }
   } catch (err) {
     console.error(`hata: ${err}`);
   }
 }
 
+function sepeteEkle(id) {
+  window.location.href = `./backend/sepet.php?islem=ekle&id=${id}`;
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await urunGetir();
+});
+
 document.getElementById("product-holder").addEventListener("click", (e) => {
-  if (e.target.closest(".btn")) return;
+  if (e.target.closest(".btn"))
+    return;
+
   const card = e.target.closest(".product-card");
 
   if (card) {
     window.location.href = `ProductDetail/index.php?id=${card.dataset.id}`;
   }
-});
-
-document.addEventListener("DOMContentLoaded", async () => {
-  await urunGetir();
 });

@@ -20,7 +20,10 @@ try {
         die("şifre yanlış");
 
     // session ve sayfa yönlendirme gibi işlemler
-    GirisYapSession(['ad_soyad' => $kullanici['ad_soyad']]);
+    GirisYapSession([
+        'ad_soyad' => $kullanici['ad_soyad'], 
+        'id' => $kullanici['kullanici_id']
+    ]);
 } catch (PDOException $ex) {
     die('girişyap hatası: ' . $ex->getMessage());
 }

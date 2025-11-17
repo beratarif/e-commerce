@@ -1,4 +1,4 @@
-<?php require_once '../backend/page.php'; ?>
+<?php require_once '../backend/kullanici.php'; ?>
 
 
 <!DOCTYPE html>
@@ -112,7 +112,6 @@
       </div>
     </div>
   </nav>
-
 
   <!-- ÜRÜN DETAY -->
   <div class="container my-5">
