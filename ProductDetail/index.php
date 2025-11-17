@@ -30,7 +30,6 @@
     .product-title {
       font-size: 2.2rem;
       font-weight: 700;
-      margin-bottom: .5rem;
     }
 
     .product-price {
