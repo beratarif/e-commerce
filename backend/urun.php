@@ -3,6 +3,10 @@ header('Content-Type: application/json; charset=utf-8');
 
 require_once 'db.php';
 
+function test() {
+    echo 'test';
+}
+
 if (isset($_GET['islem'])) {
     try {
         switch ($_GET['islem']) {
@@ -37,7 +41,9 @@ if (isset($_GET['islem'])) {
                 
                 $sayfa_getir->execute();
 
-                echo json_encode($sayfa_getir->fetchAll(PDO::FETCH_ASSOC));
+                $urunler = $sayfa_getir->fetchAll(PDO::FETCH_ASSOC);
+
+                echo json_encode($urunler);
                 break;
         }
     } catch (PDOException $ex) {

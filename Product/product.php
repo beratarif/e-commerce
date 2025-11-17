@@ -19,6 +19,10 @@ function OncekiSayfayaGidilebilirMi($onceki_sayfa)
   return $onceki_sayfa <= 0;
 }
 
+function SonrakiSayfayaGidebilirMi($sonraki_sayfa) {
+  return $sonraki_sayfa > 2;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -117,7 +121,7 @@ function OncekiSayfayaGidilebilirMi($onceki_sayfa)
 
           <a id="nextBtn"
             href="product.php?sayfa=<?php echo SonrakiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
-            class="btn btn-outline-primary ms-2">
+            class="btn btn-outline-primary ms-2 <?php if(SonrakiSayfayaGidebilirMi(SonrakiSayfa($guncel_sayfa))): ?> disabled <?php endif; ?>">
             <i class="fas fa-arrow-right"></i>
           </a>
         </div>
