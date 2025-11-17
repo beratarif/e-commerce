@@ -123,6 +123,7 @@
   <section class="container text-center my-5">
     <h2 class="mb-4 fw-bold">Kategoriler</h2>
     <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a href="Product/product.php?sayfa=1&kategori=" class="btn btn-outline-primary category-btn">Tümü</a>
       <a href="Product/product.php?sayfa=1&kategori=elektronik" class="btn btn-outline-primary category-btn">Elektronik</a>
       <a href="Product/product.php?sayfa=1&kategori=giyim" class="btn btn-outline-primary category-btn">Giyim</a>
       <a href="Product/product.php?sayfa=1&kategori=aksesuar" class="btn btn-outline-primary category-btn">Aksesuar</a>
