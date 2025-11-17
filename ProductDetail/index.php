@@ -116,17 +116,19 @@
 
   <!-- ÜRÜN DETAY -->
   <div class="container my-5">
-    <div class="row g-5">
 
+
+    <div class="row g-5" id="urun-detay" data-id="<?php echo $_GET['id'] ?>">
       <div class="col-md-6">
         <img src="../img/pillow.jpeg" class="product-img-big">
       </div>
 
       <div class="col-md-6">
         <h1 class="product-title">Ürün İsmi Buraya</h1>
-        <p class="text-muted mb-3">Bu ürünün açıklaması lorem ipsum tarzı bir şeyler buraya gelecek.</p>
+        <p class="text-muted mb-3 product-description">Bu ürünün açıklaması lorem ipsum tarzı bir şeyler buraya gelecek.
+        </p>
 
-        <div class="product-price mb-4">999₺</div>
+        <div class="product-price mb-4 product-price">999₺</div>
 
         <button class="btn btn-success btn-lg px-4">
           <i class="fa-solid fa-cart-shopping me-2"></i> Sepete Ekle
@@ -153,8 +155,8 @@
   <footer>
     <p>© 2025 Mağazam. Tüm hakları saklıdır.</p>
   </footer>
-  <script src="script.js"></script>
 
+  <script src="script.js"></script>
 </body>
 
 </html>

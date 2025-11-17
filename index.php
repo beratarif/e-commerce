@@ -62,7 +62,6 @@
   </style>
 </head>
 
-
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-light border-bottom">

@@ -147,6 +147,8 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
+        <?php else: ?>
+          <!-- burası eğer o kategoride ürün bulunmaz ise görünecek kısım -->
         <?php endif; ?>
       </div>
     </div>
@@ -154,8 +156,8 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
 
   <script src="script.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      urunGetir(<?php echo $_GET['sayfa'] ?>, '<?php echo $_GET['kategori'] ?>');
+    document.addEventListener("DOMContentLoaded", async () => {
+      await urunGetir(<?php echo $_GET['sayfa'] ?>, '<?php echo $_GET['kategori'] ?>');
     });
 
     const categories = document.querySelectorAll('#category-list a');

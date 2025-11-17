@@ -16,7 +16,7 @@ async function urunGetir(sayfa, kategori) {
 
       product_holder.innerHTML += `
         <div class="col-md-4 col-sm-6">
-          <div class="card h-100 shadow-sm product-card" data-id="${u.id}" style="cursor:pointer;">
+          <div class="card h-100 shadow-sm product-card" data-id="${u.urun_id}" style="cursor:pointer;">
             <img src="../${u.gorsel}" class="card-img-top" alt="Ürün Görseli"> 
             <div class="card-body">
               <h5 class="card-title">${u.ad}</h5>
@@ -33,9 +33,9 @@ async function urunGetir(sayfa, kategori) {
   }
 }
 document.getElementById("product-holder").addEventListener("click", (e) => {
-  // Eğer kartın içindeysek
   const card = e.target.closest(".product-card");
+
   if (card) {
-    window.location.href = `../ProductDetail/index.php`;
+    window.location.href = `../ProductDetail/index.php?id=${card.dataset.id}`;
   }
 });

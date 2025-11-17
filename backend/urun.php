@@ -30,13 +30,19 @@ if (isset($_GET['islem'])) {
                     $sayfa_getir = $pdo->prepare('SELECT * FROM urunler WHERE kategori = :kategori LIMIT :sayfa_basina_urun_sayisi OFFSET :offset');
                     $sayfa_getir->bindValue(':kategori', $kategori, PDO::PARAM_STR);
                 }
-
                 $sayfa_getir->bindValue(':sayfa_basina_urun_sayisi', $sayfa_basina_urun_sayisi, PDO::PARAM_INT);
                 $sayfa_getir->bindValue(':offset', $offset, PDO::PARAM_INT);
-
                 $sayfa_getir->execute();
                 
                 echo json_encode($sayfa_getir->fetchAll(PDO::FETCH_ASSOC));
+                break;
+            case 'urun_detay':
+                $urun_id = $_GET['id'];
+
+                $detay_getir = $pdo->prepare('SELECT * FROM urunler WHERE urun_id = :urun_id LIMIT 1');
+                $detay_getir->execute([':urun_id' => $urun_id]);
+
+                echo json_encode($detay_getir->fetch(PDO::FETCH_ASSOC));
                 break;
         }
     } catch (PDOException $ex) {
