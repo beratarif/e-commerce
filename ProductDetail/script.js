@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 document.getElementById("product-holder").addEventListener("click", (e) => {
+  if (e.target.closest(".btn")) return;
   const card = e.target.closest(".product-card");
 
   if (card) {

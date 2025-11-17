@@ -14,8 +14,7 @@ async function urunGetir() {
               <h5 class="card-title">${u.ad}</h5>
               <p class="card-text text-muted">${u.aciklama}</p>
               <p class="fw-bold fs-5 mb-3">₺${u.fiyat}</p>
-              
-              <a href="#" class="btn btn-primary w-100">Sepete Ekle</a>
+               <button href="#" class="btn btn-primary w-100 sepete-ekle">Sepete Ekle</button>
             </div>
           </div>
         </div>
@@ -27,6 +26,7 @@ async function urunGetir() {
 }
 
 document.getElementById("product-holder").addEventListener("click", (e) => {
+  if (e.target.closest(".btn")) return;
   const card = e.target.closest(".product-card");
 
   if (card) {
