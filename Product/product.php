@@ -131,21 +131,23 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
         </div>
 
         <!-- Sayfa geçişleri -->
-        <div class="d-flex justify-content-center align-items-center mt-4">
-          <a id="prevBtn"
-            href="product.php?sayfa=<?php echo OncekiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
-            class="btn btn-outline-primary me-2 <?php if (OncekiSayfayaGidilebilirMi(OncekiSayfa($guncel_sayfa))): ?> disabled <?php endif; ?>">
-            <i class="fas fa-arrow-left"></i>
-          </a>
+        <?php if (!SonrakiSayfayaGidebilirMi($sayfa_urun_sayisi) || $guncel_sayfa > 1): ?>
+          <div class="d-flex justify-content-center align-items-center mt-4">
+            <a id="prevBtn"
+              href="product.php?sayfa=<?php echo OncekiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
+              class="btn btn-outline-primary me-2 <?php if (OncekiSayfayaGidilebilirMi(OncekiSayfa($guncel_sayfa))): ?> disabled <?php endif; ?>">
+              <i class="fas fa-arrow-left"></i>
+            </a>
 
-          <span class="mx-2">Sayfa <?php echo $guncel_sayfa; ?></span>
+            <span class="mx-2">Sayfa <?php echo $guncel_sayfa; ?></span>
 
-          <a id="nextBtn"
-            href="product.php?sayfa=<?php echo SonrakiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
-            class="btn btn-outline-primary ms-2 <?php if (SonrakiSayfayaGidebilirMi($sayfa_urun_sayisi)): ?> disabled <?php endif; ?>">
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
+            <a id="nextBtn"
+              href="product.php?sayfa=<?php echo SonrakiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
+              class="btn btn-outline-primary ms-2 <?php if (SonrakiSayfayaGidebilirMi($sayfa_urun_sayisi)): ?> disabled <?php endif; ?>">
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
   </div>
