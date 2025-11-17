@@ -31,13 +31,3 @@ async function urunGetir(sayfa, kategori) {
         console.error(`hata: ${err}`);
     }
 }
-
-const categories = document.querySelectorAll('#category-list a');
-
-categories.forEach(cat =>{
-  cat.addEventListener("click", e=>{
-    e.preventDefault() ;
-    categories.forEach(c=> c.classList.remove("active"));
-    cat.classList.add("active");
-  });
-});

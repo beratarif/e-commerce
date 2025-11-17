@@ -3,10 +3,6 @@ header('Content-Type: application/json; charset=utf-8');
 
 require_once 'db.php';
 
-function test() {
-    echo 'test';
-}
-
 if (isset($_GET['islem'])) {
     try {
         switch ($_GET['islem']) {
@@ -15,14 +11,14 @@ if (isset($_GET['islem'])) {
 
                 $urun_getir_biraz = $pdo->prepare('SELECT * FROM urunler LIMIT :urun_sayisi');
                 $urun_getir_biraz->bindValue(':urun_sayisi', $urun_sayisi, PDO::PARAM_INT);
-                
+
                 $urun_getir_biraz->execute();
 
                 echo json_encode($urun_getir_biraz->fetchAll(PDO::FETCH_ASSOC));
                 break;
             case 'urunler':
                 $sayfa_basina_urun_sayisi = 9;
-                
+
                 $sayfa = $_GET['sayfa'];
                 $kategori = $_GET['kategori'];
 
@@ -30,20 +26,17 @@ if (isset($_GET['islem'])) {
 
                 if ($kategori == 'yok') {
                     $sayfa_getir = $pdo->prepare('SELECT * FROM urunler LIMIT :sayfa_basina_urun_sayisi OFFSET :offset');
-                }
-                else {
+                } else {
                     $sayfa_getir = $pdo->prepare('SELECT * FROM urunler WHERE kategori = :kategori LIMIT :sayfa_basina_urun_sayisi OFFSET :offset');
                     $sayfa_getir->bindValue(':kategori', $kategori, PDO::PARAM_STR);
                 }
 
                 $sayfa_getir->bindValue(':sayfa_basina_urun_sayisi', $sayfa_basina_urun_sayisi, PDO::PARAM_INT);
                 $sayfa_getir->bindValue(':offset', $offset, PDO::PARAM_INT);
-                
+
                 $sayfa_getir->execute();
-
-                $urunler = $sayfa_getir->fetchAll(PDO::FETCH_ASSOC);
-
-                echo json_encode($urunler);
+                
+                echo json_encode($sayfa_getir->fetchAll(PDO::FETCH_ASSOC));
                 break;
         }
     } catch (PDOException $ex) {

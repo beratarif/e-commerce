@@ -1,8 +1,23 @@
 <?php
 require_once '../backend/page.php';
+require_once '../backend/db.php';
 
 $guncel_sayfa = $_GET['sayfa'];
 $kategori = $_GET['kategori'];
+
+// sonraki sayfa kontrolü
+$sayfa_basina_urun_sayisi = 9;
+$offset = $sayfa_basina_urun_sayisi * $guncel_sayfa;
+if ($kategori == 'yok') {
+  $sayfa_getir = $pdo->prepare('SELECT * FROM urunler LIMIT :sayfa_basina_urun_sayisi OFFSET :offset');
+} else {
+  $sayfa_getir = $pdo->prepare('SELECT * FROM urunler WHERE kategori = :kategori LIMIT :sayfa_basina_urun_sayisi OFFSET :offset');
+  $sayfa_getir->bindValue(':kategori', $kategori, PDO::PARAM_STR);
+}
+$sayfa_getir->bindValue(':sayfa_basina_urun_sayisi', $sayfa_basina_urun_sayisi, PDO::PARAM_INT);
+$sayfa_getir->bindValue(':offset', $offset, PDO::PARAM_INT);
+$sayfa_getir->execute();
+$sayfa_urun_sayisi = count($sayfa_getir->fetchAll(PDO::FETCH_ASSOC));
 
 function OncekiSayfa($guncel_sayfa)
 {
@@ -19,8 +34,13 @@ function OncekiSayfayaGidilebilirMi($onceki_sayfa)
   return $onceki_sayfa <= 0;
 }
 
-function SonrakiSayfayaGidebilirMi($sonraki_sayfa) {
-  return $sonraki_sayfa > 2;
+function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
+{
+  if ($sonraki_sayfa_urun_sayisi == 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 ?>
@@ -97,11 +117,12 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa) {
     <div class="row">
       <div class="col-lg-3 mb-4">
         <div class="list-group" id="category-list">
-          <a href="#" class="list-group-item list-group-item-action">Tümü</a>
-          <a href="#" class="list-group-item list-group-item-action">Elektronik</a>
-          <a href="#" class="list-group-item list-group-item-action">Giyim</a>
-          <a href="#" class="list-group-item list-group-item-action">Kozmetik</a>
-          <a href="#" class="list-group-item list-group-item-action">Ev & Yaşam</a>
+          <a href="product.php?sayfa=1&kategori=yok" class="list-group-item list-group-item-action">Tümü</a>
+          <a href="product.php?sayfa=1&kategori=elektronik"
+            class="list-group-item list-group-item-action">Elektronik</a>
+          <a href="product.php?sayfa=1&kategori=giyim" class="list-group-item list-group-item-action">Giyim</a>
+          <a href="product.php?sayfa=1&kategori=aksesuar" class="list-group-item list-group-item-action">Aksesuar</a>
+          <a href="product.php?sayfa=1&kategori=ev_yasam" class="list-group-item list-group-item-action">Ev & Yaşam</a>
         </div>
       </div>
       <div class="col-lg-9">
@@ -113,7 +134,7 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa) {
         <div class="d-flex justify-content-center align-items-center mt-4">
           <a id="prevBtn"
             href="product.php?sayfa=<?php echo OncekiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
-            class="btn btn-outline-primary me-2 <?php if(OncekiSayfayaGidilebilirMi(OncekiSayfa($guncel_sayfa))): ?> disabled <?php endif; ?>">
+            class="btn btn-outline-primary me-2 <?php if (OncekiSayfayaGidilebilirMi(OncekiSayfa($guncel_sayfa))): ?> disabled <?php endif; ?>">
             <i class="fas fa-arrow-left"></i>
           </a>
 
@@ -121,7 +142,7 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa) {
 
           <a id="nextBtn"
             href="product.php?sayfa=<?php echo SonrakiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
-            class="btn btn-outline-primary ms-2 <?php if(SonrakiSayfayaGidebilirMi(SonrakiSayfa($guncel_sayfa))): ?> disabled <?php endif; ?>">
+            class="btn btn-outline-primary ms-2 <?php if (SonrakiSayfayaGidebilirMi($sayfa_urun_sayisi)): ?> disabled <?php endif; ?>">
             <i class="fas fa-arrow-right"></i>
           </a>
         </div>
@@ -134,6 +155,17 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa) {
     document.addEventListener("DOMContentLoaded", () => {
       urunGetir(<?php echo $_GET['sayfa'] ?>, '<?php echo $_GET['kategori'] ?>');
     });
+
+    const categories = document.querySelectorAll('#category-list a');
+
+    switch ('<?php echo $_GET['kategori']; ?>') {
+      case 'yok': categories[0].classList.add("active"); break;
+      case 'elektronik': categories[1].classList.add("active"); break;
+      case 'giyim': categories[2].classList.add("active"); break;
+      case 'aksesuar': categories[3].classList.add("active"); break;
+      case 'ev_yasam': categories[4].classList.add("active"); break;
+      default: break;
+    }
   </script>
 </body>
 
