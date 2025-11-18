@@ -26,6 +26,10 @@
       text-align: center;
       margin-top: 4rem;
     }
+
+    .sepet {
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -121,7 +125,7 @@
         for (const s of await sonuc.json()) {
           basket_holder.innerHTML +=
             `
-            <div class="card mb-3 sepet" data-id="${s.urun.id}">
+          <div class="card mb-3 sepet" data-id="${s.urun.id}">
             <div class="row g-0 align-items-center">
               <div class="col-md-3">
                 <img
@@ -150,6 +154,13 @@
         </div>
             `;
         }
+
+        document.querySelectorAll(".sepet").forEach(card => {
+          card.addEventListener("click", function(e) {
+            if (e.target.tagName === "BUTTON")return;
+            window.location.href = "../ProductDetail/index.php?id=" + this.dataset.id;
+          });
+        });
 
         for (const sepet of document.querySelectorAll(".sepet")) {
           sepet.querySelector(".sepete_ekle").onclick = () => {
