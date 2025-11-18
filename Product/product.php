@@ -55,7 +55,6 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../css/icons.css">
   <style>
     .card-img-top {
       height: 200px;
@@ -136,7 +135,7 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
             <a id="prevBtn"
               href="product.php?sayfa=<?php echo OncekiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
               class="btn btn-outline-primary me-2 <?php if (OncekiSayfayaGidilebilirMi(OncekiSayfa($guncel_sayfa))): ?> disabled <?php endif; ?>">
-              <i class="fas fa-arrow-left"></i>
+              <i class="	fa fa-arrow-left"></i>
             </a>
 
             <span class="mx-2">Sayfa <?php echo $guncel_sayfa; ?></span>
@@ -144,7 +143,7 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
             <a id="nextBtn"
               href="product.php?sayfa=<?php echo SonrakiSayfa($guncel_sayfa); ?>&kategori=<?php echo $kategori; ?>"
               class="btn btn-outline-primary ms-2 <?php if (SonrakiSayfayaGidebilirMi($sayfa_urun_sayisi)): ?> disabled <?php endif; ?>">
-              <i class="fas fa-arrow-right"></i>
+              <i class="	fa fa-arrow-right"></i>
             </a>
           </div>
         <?php else: ?>
