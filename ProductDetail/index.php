@@ -129,7 +129,7 @@
 
         <div class="product-price mb-4 product-price">999₺</div>
 
-        <button class="btn btn-success btn-lg px-4">
+        <button class="btn btn-success btn-lg px-4 sepete-ekle">
           <i class="fa-solid fa-cart-shopping me-2"></i> Sepete Ekle
         </button>
       </div>
@@ -160,7 +160,7 @@
       const product_holder = document.getElementById("product-holder");
 
       try {
-        const response = await fetch(`../backend/urun.php?islem=anasayfa`);
+        const response = await fetch(`../backend/urun.php?islem=urunler&sayfa=2&kategori=yok`);
 
         for (const u of await response.json()) {
           product_holder.innerHTML += `
@@ -189,7 +189,6 @@
       }
     }
 
-
     function sepeteEkle(id) {
       if (<?php echo $giris_yapildi ? 'true' : 'false' ?>) {
         window.location.href = `../backend/sepet.php?islem=ekle&id=${id}`;
@@ -217,6 +216,10 @@
         urun_baslik.innerHTML = sonucJson.ad;
         urun_aciklama.innerHTML = sonucJson.aciklama;
         urun_fiyat.innerHTML = `${sonucJson.fiyat}₺`;
+
+        urun_detay.querySelector(".sepete-ekle").onclick = () => {
+          sepeteEkle(urun_detay.dataset.id);
+        };
       }
       catch (err) {
         console.error(`hata: ${err}`);

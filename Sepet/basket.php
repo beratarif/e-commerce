@@ -92,19 +92,21 @@
 
       <div class="col-lg-4">
         <div class="card shadow-sm">
-          <div class="card-body">
+
+
+          <div class="card-body toplam_tutar">
             <h5 class="card-title">Sipariş Özeti</h5>
-            <p class="card-text d-flex justify-content-between">
-              <span>Ara Toplam:</span> <span id="subtotal">₺1897</span>
+            <p class="card-text d-flex justify-content-between ara_toplam">
+              <span>Ara Toplam:</span> <span id="subtotal">₺0</span>
             </p>
-            <p class="card-text d-flex justify-content-between">
-              <span>Kargo:</span> <span id="shipping">₺50</span>
+            <p class="card-text d-flex justify-content-between kargo_ucreti">
+              <span>Kargo:</span> <span id="shipping">₺0</span>
             </p>
             <hr />
             <p class="card-text d-flex justify-content-between fw-bold">
-              <span>Toplam:</span> <span id="total">₺1947</span>
+              <span>Toplam:</span> <span id="total">₺0</span>
             </p>
-            <button class="btn btn-success w-100 mt-3">Siparişi Onayla</button>
+            <button class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
           </div>
         </div>
       </div>
@@ -121,6 +123,9 @@
 
       try {
         const sonuc = await fetch(`../backend/sepet.php?islem=getir`);
+
+        let ara_toplam = 0;
+        const kargo_ucreti = 50;
 
         for (const s of await sonuc.json()) {
           basket_holder.innerHTML +=
@@ -153,7 +158,21 @@
           </div>
         </div>
             `;
+
+          ara_toplam += s.urun.fiyat * s.adet;
         }
+
+        document.getElementById("subtotal").innerHTML = `₺${ara_toplam.toFixed(2)}`;
+
+        if (ara_toplam > 0) {
+          document.getElementById("shipping").innerHTML = `₺${kargo_ucreti.toFixed(2)}`;
+          document.getElementById("total").innerHTML = `₺${(ara_toplam + kargo_ucreti).toFixed(2)}`;
+        }
+        else {
+          document.getElementById("shipping").innerHTML = `₺${ara_toplam.toFixed(2)}`;
+          document.getElementById("total").innerHTML = `₺${ara_toplam.toFixed(2)}`;
+        }
+        
 
         document.querySelectorAll(".sepet").forEach(card => {
           card.addEventListener("click", function(e) {
