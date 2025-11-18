@@ -3,9 +3,8 @@ async function urunGetir() {
 
   try {
     const response = await fetch(`../backend/urun.php?islem=anasayfa`);
-    const r = await response.json();
-
-    for (const u of r) {
+    
+    for (const u of await response.json()) {
       product_holder.innerHTML += `
             <div class="col-md-4 col-sm-6">
               <div class="card h-100 shadow-sm product-card" data-id="${u.urun_id}" style="cursor:pointer;">

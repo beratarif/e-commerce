@@ -16,7 +16,7 @@ switch ($_GET['islem']) {
             ':urun_id' => $urun_id,
             ':kullanici_id' => $kullanici_id
         ]);
-        
+
         $sepet = $sepet_getir->fetch(PDO::FETCH_ASSOC);
         if ($sepet) {
             $sepet_guncelle = $pdo->prepare('UPDATE sepetler SET adet = :yeni_adet WHERE kullanici_id = :kullanici_id AND urun_id = :urun_id');
@@ -36,13 +36,78 @@ switch ($_GET['islem']) {
 
         header("location: ../Sepet/basket.php");
         break;
+    case 'cikar':
+        $urun_id = $_GET['id'];
+        $tum_urunler = $_GET['tum_urunler'];
+
+        if ($tum_urunler == 'true') {
+            $tum_urunler_sil = $pdo->prepare('DELETE FROM sepetler WHERE kullanici_id = :kullanici_id AND urun_id = :urun_id');
+            $tum_urunler_sil->execute([
+                ':urun_id' => $urun_id,
+                ':kullanici_id' => $kullanici_id 
+            ]);
+        }
+        else {
+            $adet_getir = $pdo->prepare('SELECT adet FROM sepetler WHERE kullanici_id = :kullanici_id AND urun_id = :urun_id');
+            $adet_getir->execute([
+                ':urun_id' => $urun_id,
+                ':kullanici_id' => $kullanici_id 
+            ]);
+
+            $yeniAdet = $adet_getir->fetch()['adet'] - 1;
+            
+            if ($yeniAdet < 1) {
+                $tum_urunler_sil = $pdo->prepare('DELETE FROM sepetler WHERE kullanici_id = :kullanici_id AND urun_id = :urun_id');
+                $tum_urunler_sil->execute([
+                    ':urun_id' => $urun_id,
+                    ':kullanici_id' => $kullanici_id 
+                ]);
+            }
+            else {
+                $adet_guncelle = $pdo->prepare('UPDATE sepetler SET adet = :yeni_adet WHERE kullanici_id = :kullanici_id AND urun_id = :urun_id');
+                $adet_guncelle->execute([
+                    ':urun_id' => $urun_id,
+                    ':kullanici_id' => $kullanici_id,
+                    ':yeni_adet' => $yeniAdet
+                ]);
+            }
+        }
+
+        header("location: ../Sepet/basket.php");
+        break;
     case 'getir':
-        $sepet_getir = $pdo->prepare('SELECT * FROM sepetler WHERE kullanici_id = :kullanici_id');
+        $sepet_getir = $pdo->prepare("
+            SELECT
+                u.urun_id,
+                u.ad,
+                u.aciklama,
+                u.fiyat,
+                u.gorsel,
+                s.adet
+            FROM sepetler s
+            INNER JOIN urunler u ON s.urun_id = u.urun_id
+            WHERE s.kullanici_id = :kullanici_id"
+        );
+
         $sepet_getir->execute([':kullanici_id' => $kullanici_id]);
+        $satirlar = $sepet_getir->fetchAll(PDO::FETCH_ASSOC);
 
-        // ürün => adet
+        $sonuc = [];
 
-        echo var_dump($sepet_getir->fetchAll(PDO::FETCH_ASSOC));
+        foreach ($satirlar as $satir) {
+            $sonuc[] = [
+                'adet' => $satir['adet'],
+                'urun' => [
+                    'id' => $satir["urun_id"],
+                    'ad' => $satir['ad'],
+                    'aciklama' => $satir['aciklama'],
+                    'fiyat' => $satir['fiyat'],
+                    'gorsel' => $satir['gorsel']
+                ]
+            ];
+        }
+
+        echo json_encode($sonuc);
         break;
 }
 ?>
