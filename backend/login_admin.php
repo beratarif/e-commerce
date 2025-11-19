@@ -19,7 +19,7 @@ try {
         die("şifre yanlış");
 
     if ($kullanici['yetki'] == 'normal') {
-        die('bu hesap yetkili değildir');
+        die('yetkili olan bir hesap ile deneyin');
     }
 
     GirisYapAdminSession(['ad_soyad' => $kullanici['ad_soyad']]);

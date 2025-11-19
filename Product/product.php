@@ -146,23 +146,6 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
               <i class="	fa fa-arrow-right"></i>
             </a>
           </div>
-        <?php else: ?>
-<<<<<<< HEAD
-
-
-
-          
-
-
-
-
-
-=======
-          <div class="text-center mt-5">
-            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="120" alt="No Product">
-            <h5 class="text-uppercase text-muted mt-3">Bu kategori'de ürün bulunamadı</h5>
-          </div>
->>>>>>> 4a3748a (new stock add)
         <?php endif; ?>
       </div>
     </div>
@@ -178,9 +161,7 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
       const product_holder = document.getElementById("product-holder");
 
       try {
-        const response = await fetch(
-          `../backend/urun.php?islem=urunler&sayfa=${sayfa}&kategori=${kategori}`
-        );
+        const response = await fetch(`../backend/urun.php?islem=urunler&sayfa=${sayfa}&kategori=${kategori}`);
         const r = await response.json();
 
         if (r.length > 0) {
