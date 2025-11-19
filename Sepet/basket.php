@@ -170,7 +170,7 @@
               <h5 class="card-title">${u.ad}</h5>
               <p class="card-text text-muted">${u.aciklama}</p>
               <p class="fw-bold fs-5 mb-3">₺${u.fiyat}</p>
-
+              <p class="text-muted small mt-2">12 adet</p>
               <button class="btn btn-primary w-100 sepete-ekle">Sepete Ekle</button>
             </div>
           </div>
@@ -234,12 +234,10 @@
 
               ara_toplam += s.urun.fiyat * s.adet;
             }
-          }
-          else {
+          } else {
             document.querySelector(".siparis-onayla").classList.add("disabled");
           }
-        }
-        else {
+        } else {
           document.querySelector(".siparis-onayla").classList.add("disabled");
         }
 

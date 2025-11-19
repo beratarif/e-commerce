@@ -72,7 +72,14 @@ if (!$giris_yapildi) {
         </tr>
       </thead>
       <tbody id="productsTableBody">
-        <!-- Ürünler buraya JS ile gelecek -->
+        <td>Ürün adı</td>
+        <td>Ürün fiyatı</td>
+        <td>Ürün kategorisi</td>
+        <td>Ürün Stoğu</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-1" onclick="editProduct">Düzenle</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteProduct">Sil</button>
+        </td><!-- Ürünler buraya JS ile gelecek -->
       </tbody>
     </table>
   </div>

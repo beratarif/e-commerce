@@ -69,7 +69,38 @@ if (!$giris_yapildi) {
           <th>İşlem</th>
         </tr>
       </thead>
-      <tbody id="ordersTableBody"></tbody>
+      <tbody id="ordersTableBody">
+        <td>${order.id}</td>
+        <td>${order.customer}</td>
+        <td>${order.amount} ₺</td>
+        <td>
+          <span>
+            <!-- Her işleme özel bir görünüm olacak
+          
+          Bekliyor: Sarı
+
+          Kargolandı: Mavi
+
+          Tamamlandı: Yeşil
+          
+          -->
+
+          </span>
+        </td>
+        <td>
+          <select class="form-select form-select-sm"">
+            <option value=" Bekliyor" ${
+            order.status==="Bekliyor" ? "selected" : ""
+            }>Bekliyor</option>
+            <option value="Kargolandı" ${
+              order.status==="Kargolandı" ? "selected" : ""
+              }>Kargolandı</option>
+            <option value="Tamamlandı" ${
+              order.status==="Tamamlandı" ? "selected" : ""
+              }>Tamamlandı</option>
+          </select>
+        </td>
+      </tbody>
     </table>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

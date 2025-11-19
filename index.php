@@ -59,6 +59,18 @@
       background-color: #f8f9fa;
       /* arka plan boş kalırsa hoş durur */
     }
+
+    .stock-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #198754;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
   </style>
 </head>
 
@@ -158,13 +170,14 @@
         for (const u of await response.json()) {
           product_holder.innerHTML += `
         <div class="col-md-4 col-sm-6">
+        
           <div class="card h-100 shadow-sm product-card" data-id="${u.urun_id}" style="cursor:pointer;">
             <img src="${u.gorsel}" class="card-img-top" alt="Ürün Görseli"> 
             <div class="card-body">
-              <h5 class="card-title">${u.ad}</h5>
+              <h5 class="card-title">${u.ad} </h5>
               <p class="card-text text-muted">${u.aciklama}</p>
-              <p class="fw-bold fs-5 mb-3">₺${u.fiyat}</p>
-
+              <p class="fw-bold fs-5 mb-1">₺${u.fiyat}</p>
+              <p class="text-muted small mt-2">12 adet</p>
               <button class="btn btn-primary w-100 sepete-ekle">Sepete Ekle</button>
             </div>
           </div>
@@ -185,8 +198,7 @@
     function sepeteEkle(id) {
       if (<?php echo $giris_yapildi ? 'true' : 'false' ?>) {
         window.location.href = `backend/sepet.php?islem=ekle&id=${id}`;
-      }
-      else {
+      } else {
         window.location.href = `./LoginRegister/index.php`;
       }
     }

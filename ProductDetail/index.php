@@ -128,9 +128,9 @@
         </p>
 
         <div class="product-price mb-4 product-price">999₺</div>
-
+        <h5 class="text-muted xxl mb-2">Stok: 12 adet</h5>
         <button class="btn btn-success btn-lg px-4 sepete-ekle">
-          <i class="fa-solid fa-cart-shopping me-2"></i> Sepete Ekle
+          <i class="fa fa-solid fa-cart-shopping me-2"></i> Sepete Ekle
         </button>
       </div>
 
@@ -170,7 +170,8 @@
             <div class="card-body">
               <h5 class="card-title">${u.ad}</h5>
               <p class="card-text text-muted">${u.aciklama}</p>
-              <p class="fw-bold fs-5 mb-3">₺${u.fiyat}</p>
+              <p class="fw-bold fs-5 mb-1">₺${u.fiyat}</p>
+              <p class="text-muted small mt-2">12 adet</p>
 
               <button class="btn btn-primary w-100 sepete-ekle">Sepete Ekle</button>
             </div>
@@ -192,8 +193,7 @@
     function sepeteEkle(id) {
       if (<?php echo $giris_yapildi ? 'true' : 'false' ?>) {
         window.location.href = `../backend/sepet.php?islem=ekle&id=${id}`;
-      }
-      else {
+      } else {
         window.location.href = `../LoginRegister/index.php`;
       }
     }
@@ -220,8 +220,7 @@
         urun_detay.querySelector(".sepete-ekle").onclick = () => {
           sepeteEkle(urun_detay.dataset.id);
         };
-      }
-      catch (err) {
+      } catch (err) {
         console.error(`hata: ${err}`);
       }
     }
@@ -239,7 +238,6 @@
         window.location.href = `index.php?id=${card.dataset.id}`;
       }
     });
-
   </script>
 </body>
 

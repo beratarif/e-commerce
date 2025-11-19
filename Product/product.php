@@ -147,6 +147,7 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
             </a>
           </div>
         <?php else: ?>
+<<<<<<< HEAD
 
 
 
@@ -156,6 +157,12 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
 
 
 
+=======
+          <div class="text-center mt-5">
+            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="120" alt="No Product">
+            <h5 class="text-uppercase text-muted mt-3">Bu kategori'de ürün bulunamadı</h5>
+          </div>
+>>>>>>> 4a3748a (new stock add)
         <?php endif; ?>
       </div>
     </div>
@@ -187,8 +194,8 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
             <div class="card-body">
               <h5 class="card-title">${u.ad}</h5>
               <p class="card-text text-muted">${u.aciklama}</p>
-              <p class="fw-bold fs-5 mb-3">₺${u.fiyat}</p>
-
+              <p class="fw-bold fs-5 mb-1">₺${u.fiyat}</p>
+              <p class="text-muted small mt-n2">12 Adet</p>
               <button class="btn btn-primary w-100 sepete-ekle">Sepete Ekle</button>
             </div>
           </div>
