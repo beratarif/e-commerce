@@ -106,7 +106,7 @@
             <p class="card-text d-flex justify-content-between fw-bold">
               <span>Toplam:</span> <span id="total">₺0</span>
             </p>
-            <button class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
+            <button onclick="window.location.href='Payment/index.php';" class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
           </div>
         </div>
       </div>

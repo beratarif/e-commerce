@@ -23,7 +23,7 @@
     }
 
     .product-img-big {
-      width: 100%;
+      width: 55%;
       border-radius: 14px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, .15);
     }
@@ -118,7 +118,7 @@
 
 
     <div class="row g-5" id="urun-detay" data-id="<?php echo $_GET['id'] ?>">
-      <div class="col-md-6">
+      <div class="col-md-6 d-flex justify-content-center align-items-center">
         <img src="../img/pillow.jpeg" class="product-img-big">
       </div>
 
