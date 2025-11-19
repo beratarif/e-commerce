@@ -18,7 +18,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light border-bottom">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="../../index.php">Mağazam</a>
+      <a class="navbar-brand fw-bold" href="../../index.php">Mağazamız</a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
