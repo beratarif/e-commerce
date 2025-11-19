@@ -62,7 +62,7 @@ if (!$giris_yapildi) {
     <table class="table table-bordered align-middle mt-3">
       <thead class="table-dark">
         <tr>
-          <th>#</th>
+          <th>ID</th>
           <th>Müşteri</th>
           <th>Tutar</th>
           <th>Durum</th>
