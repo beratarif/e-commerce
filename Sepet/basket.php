@@ -133,7 +133,7 @@
               <span>Toplam:</span> <span id="total">₺0</span>
             </p>
 <<<<<<< HEAD
-            <button onclick="window.location.href='Payment/index.php';"
+            <button onclick="window.location.href='payment/payment.php';"
               class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
 =======
             <button onclick="window.location.href='payment/payment.php';" class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
