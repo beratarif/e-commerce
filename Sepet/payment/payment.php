@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../css/icons.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweatAlert/sweatAlert.js"></script>
     <style>
         .payment-card {
             padding: 25px;
@@ -127,6 +127,10 @@
         const paymentCard = document.querySelectorAll(".payment-card");
         let selectedMethod = null;
 
+        async function sepetBosalt() {
+            await fetch('../../backend/sepet.php?islem=sepet_bosalt');
+        }
+
         paymentCard.forEach((card) => {
             card.addEventListener("click", () => {
                 paymentCard.forEach((c) => c.classList.remove("active-card"));
@@ -149,6 +153,9 @@
                 });
                 return;
             }
+            
+            sepetBosalt();
+
             Swal.fire({
                 icon: "success",
                 title: "Sipariş Onaylandı!",

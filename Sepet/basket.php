@@ -123,14 +123,14 @@
           <div class="card-body toplam_tutar">
             <h5 class="card-title">Sipariş Özeti</h5>
             <p class="card-text d-flex justify-content-between ara_toplam">
-              <span>Ara Toplam:</span> <span id="subtotal">₺0</span>
+              <span>Ara Toplam:</span> <span id="subtotal">₺0.00</span>
             </p>
             <p class="card-text d-flex justify-content-between kargo_ucreti">
-              <span>Kargo:</span> <span id="shipping">₺0</span>
+              <span>Kargo:</span> <span id="shipping">₺0.00</span>
             </p>
             <hr />
             <p class="card-text d-flex justify-content-between fw-bold">
-              <span>Toplam:</span> <span id="total">₺0</span>
+              <span>Toplam:</span> <span id="total">₺0.00</span>
             </p>
             <button onclick="window.location.href='payment/payment.php';"
               class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
@@ -188,8 +188,6 @@
       }
     }
 
-
-
     async function sepetGetir() {
       const basket_holder = document.getElementById('basket-holder');
 
@@ -199,9 +197,12 @@
         let ara_toplam = 0;
         const kargo_ucreti = 50;
 
-        for (const s of await sonuc.json()) {
-          basket_holder.innerHTML +=
-            `
+        if (<?php echo $giris_yapildi ? 'true' : 'false' ?>) {
+          const sonucJson = await sonuc.json();
+          if (sonucJson.length > 0) {
+            for (const s of sonucJson) {
+              basket_holder.innerHTML +=
+                `
           <div class="card mb-3 sepet" data-id="${s.urun.id}">
             <div class="row g-0 align-items-center">
               <div class="col-md-3">
@@ -231,7 +232,15 @@
         </div>
             `;
 
-          ara_toplam += s.urun.fiyat * s.adet;
+              ara_toplam += s.urun.fiyat * s.adet;
+            }
+          }
+          else {
+            document.querySelector(".siparis-onayla").classList.add("disabled");
+          }
+        }
+        else {
+          document.querySelector(".siparis-onayla").classList.add("disabled");
         }
 
         document.getElementById("subtotal").innerHTML = `₺${ara_toplam.toFixed(2)}`;
@@ -243,7 +252,6 @@
           document.getElementById("shipping").innerHTML = `₺${ara_toplam.toFixed(2)}`;
           document.getElementById("total").innerHTML = `₺${ara_toplam.toFixed(2)}`;
         }
-
 
         document.querySelectorAll(".sepet").forEach(card => {
           card.addEventListener("click", function(e) {
@@ -293,7 +301,7 @@
       const card = e.target.closest(".product-card");
 
       if (card) {
-        window.location.href = `index.php?id=${card.dataset.id}`;
+        window.location.href = `../ProductDetail/index.php?id=${card.dataset.id}`;
       }
     });
   </script>

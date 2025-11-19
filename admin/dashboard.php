@@ -43,7 +43,7 @@ if (!$giris_yapildi) {
             id="userDropdown"
             data-bs-toggle="dropdown"
             aria-expanded="false">
-            <?php echo htmlspecialchars($yetkili['eposta']); ?>
+            <?php echo htmlspecialchars($yetkili['ad_soyad']); ?>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
             <li><a class="dropdown-item text-danger" href="../backend/logout.php?hangi_cikis=yetkili">Çıkış Yap</a></li>

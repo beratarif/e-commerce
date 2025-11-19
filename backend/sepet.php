@@ -109,5 +109,9 @@ switch ($_GET['islem']) {
 
         echo json_encode($sonuc);
         break;
+    case 'sepet_bosalt':
+        $sepet_bosalt = $pdo->prepare("DELETE FROM sepetler WHERE kullanici_id = :kullanici_id");
+        $sepet_bosalt->execute([':kullanici_id' => $kullanici_id]);
+        break;
 }
 ?>

@@ -225,7 +225,7 @@
         console.error(`hata: ${err}`);
       }
     }
-    
+
     document.addEventListener("DOMContentLoaded", async () => {
       await urunDetayGetir();
       await urunGetir();
