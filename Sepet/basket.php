@@ -132,12 +132,8 @@
             <p class="card-text d-flex justify-content-between fw-bold">
               <span>Toplam:</span> <span id="total">₺0</span>
             </p>
-<<<<<<< HEAD
             <button onclick="window.location.href='payment/payment.php';"
               class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
-=======
-            <button onclick="window.location.href='payment/payment.php';" class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
->>>>>>> 802f2393524be86c2d9f699563ce47fb18be463c
           </div>
         </div>
       </div>
@@ -159,7 +155,7 @@
   </footer>
 
   <script>
-        async function urunGetir() {
+    async function urunGetir() {
       const product_holder = document.getElementById("product-holder");
 
       try {
@@ -243,15 +239,14 @@
         if (ara_toplam > 0) {
           document.getElementById("shipping").innerHTML = `₺${kargo_ucreti.toFixed(2)}`;
           document.getElementById("total").innerHTML = `₺${(ara_toplam + kargo_ucreti).toFixed(2)}`;
-        }
-        else {
+        } else {
           document.getElementById("shipping").innerHTML = `₺${ara_toplam.toFixed(2)}`;
           document.getElementById("total").innerHTML = `₺${ara_toplam.toFixed(2)}`;
         }
 
 
         document.querySelectorAll(".sepet").forEach(card => {
-          card.addEventListener("click", function (e) {
+          card.addEventListener("click", function(e) {
             if (e.target.tagName === "BUTTON") return;
             window.location.href = "../ProductDetail/index.php?id=" + this.dataset.id;
           });
@@ -268,8 +263,7 @@
             sepetCikar(sepet.dataset.id, true);
           };
         }
-      }
-      catch (err) {
+      } catch (err) {
         console.error(err);
       }
     }
@@ -277,8 +271,7 @@
     function sepeteEkle(id) {
       if (<?php echo $giris_yapildi ? 'true' : 'false' ?>) {
         window.location.href = `../backend/sepet.php?islem=ekle&id=${id}`;
-      }
-      else {
+      } else {
         window.location.href = `../LoginRegister/index.php`;
       }
     }
@@ -286,8 +279,7 @@
     function sepetCikar(id, tumUrunler) {
       if (<?php echo $giris_yapildi ? 'true' : 'false' ?>) {
         window.location.href = `../backend/sepet.php?islem=cikar&id=${id}&tum_urunler=${tumUrunler}`;
-      }
-      else {
+      } else {
         window.location.href = `../LoginRegister/index.php`;
       }
     }
@@ -296,7 +288,7 @@
       await sepetGetir();
       await urunGetir();
     });
-        document.getElementById("product-holder").addEventListener("click", (e) => {
+    document.getElementById("product-holder").addEventListener("click", (e) => {
       if (e.target.closest(".btn")) return;
       const card = e.target.closest(".product-card");
 
@@ -304,8 +296,6 @@
         window.location.href = `index.php?id=${card.dataset.id}`;
       }
     });
-
-
   </script>
 </body>
 
