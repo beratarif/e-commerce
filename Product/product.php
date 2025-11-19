@@ -63,6 +63,21 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
       background-color: #f8f9fa;
       /* arka plan boş kalırsa hoş durur */
     }
+
+    .product-info {
+      display: flex;
+      align-items: center;
+      /* dikey olarak ortalamak için */
+    }
+
+    .price {
+      font-weight: bold;
+    }
+
+    .stock {
+      color: gray;
+      padding-left: 8rem;
+    }
   </style>
 </head>
 
@@ -175,8 +190,10 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
             <div class="card-body">
               <h5 class="card-title">${u.ad}</h5>
               <p class="card-text text-muted">${u.aciklama}</p>
-              <p class="fw-bold fs-5 mb-1">₺${u.fiyat}</p>
-              <p class="text-muted small mt-n2">12 Adet</p>
+                            <div class="product-info">
+              <p class="price fw-bold fs-5 mb-1">₺${u.fiyat}</p>
+              <p class="stock text-muted small mt-2">12 adet</p>
+              </div>
               <button class="btn btn-primary w-100 sepete-ekle">Sepete Ekle</button>
             </div>
           </div>
