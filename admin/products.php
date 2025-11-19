@@ -36,12 +36,12 @@ if (!$giris_yapildi) {
       <?php if ($giris_yapildi): ?>
         <div class="dropdown">
           <button
-            class="btn btn-outline-light btn-sm dropdown-toggle fw-semibold"
+            class="btn btn-outline-light btn-sm dropdown-toggle text-uppercase fw-semibold"
             type="button"
             id="userDropdown"
             data-bs-toggle="dropdown"
             aria-expanded="false">
-            <?php echo htmlspecialchars($yetkili['eposta']); ?>
+            <?php echo htmlspecialchars($yetkili['ad_soyad']); ?>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
             <li><a class="dropdown-item text-danger" href="../backend/logout.php?hangi_cikis=yetkili">Çıkış Yap</a></li>

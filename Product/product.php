@@ -147,7 +147,10 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
             </a>
           </div>
         <?php else: ?>
-          <!-- burası eğer o kategoride ürün bulunmaz ise görünecek kısım --
+          <div class="text-center mt-5">
+            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="120" alt="No Product" >
+            <h5 class="text-uppercase text-muted mt-3">Bu kategori'de ürün bulunamadı</h5>
+          </div>
         <?php endif; ?>
       </div>
     </div>
@@ -155,7 +158,6 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
 
 
   <script>
-
     function bekle(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
@@ -201,8 +203,7 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
     function sepeteEkle(id) {
       if (<?php echo $giris_yapildi ? 'true' : 'false' ?>) {
         window.location.href = `../backend/sepet.php?islem=ekle&id=${id}`;
-      }
-      else {
+      } else {
         window.location.href = `../LoginRegister/index.php`;
       }
     }
@@ -224,12 +225,23 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
     const categories = document.querySelectorAll('#category-list a');
 
     switch ('<?php echo $_GET['kategori']; ?>') {
-      case 'yok': categories[0].classList.add("active"); break;
-      case 'elektronik': categories[1].classList.add("active"); break;
-      case 'giyim': categories[2].classList.add("active"); break;
-      case 'aksesuar': categories[3].classList.add("active"); break;
-      case 'ev_yasam': categories[4].classList.add("active"); break;
-      default: break;
+      case 'yok':
+        categories[0].classList.add("active");
+        break;
+      case 'elektronik':
+        categories[1].classList.add("active");
+        break;
+      case 'giyim':
+        categories[2].classList.add("active");
+        break;
+      case 'aksesuar':
+        categories[3].classList.add("active");
+        break;
+      case 'ev_yasam':
+        categories[4].classList.add("active");
+        break;
+      default:
+        break;
     }
   </script>
 </body>

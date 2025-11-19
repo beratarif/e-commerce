@@ -38,7 +38,7 @@ if (!$giris_yapildi) {
       <?php if ($giris_yapildi): ?>
         <div class="dropdown">
           <button
-            class="btn btn-outline-light btn-sm dropdown-toggle fw-semibold"
+            class="btn btn-outline-light btn-sm dropdown-toggle text-uppercase fw-semibold"
             type="button"
             id="userDropdown"
             data-bs-toggle="dropdown"
