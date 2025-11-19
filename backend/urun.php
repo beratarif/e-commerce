@@ -9,7 +9,7 @@ if (isset($_GET['islem'])) {
             case 'anasayfa':
                 $urun_sayisi = 9;
 
-                $urun_getir_biraz = $pdo->prepare('SELECT * FROM urunler LIMIT :urun_sayisi');
+                $urun_getir_biraz = $pdo->prepare('SELECT * FROM urunler WHERE aktiflik = 1 LIMIT :urun_sayisi');
                 $urun_getir_biraz->bindValue(':urun_sayisi', $urun_sayisi, PDO::PARAM_INT);
 
                 $urun_getir_biraz->execute();
@@ -25,9 +25,9 @@ if (isset($_GET['islem'])) {
                 $offset = $sayfa_basina_urun_sayisi * ($sayfa - 1);
 
                 if ($kategori == 'yok') {
-                    $sayfa_getir = $pdo->prepare('SELECT * FROM urunler LIMIT :sayfa_basina_urun_sayisi OFFSET :offset');
+                    $sayfa_getir = $pdo->prepare('SELECT * FROM urunler WHERE aktiflik = 1 LIMIT :sayfa_basina_urun_sayisi OFFSET :offset');
                 } else {
-                    $sayfa_getir = $pdo->prepare('SELECT * FROM urunler WHERE kategori = :kategori LIMIT :sayfa_basina_urun_sayisi OFFSET :offset');
+                    $sayfa_getir = $pdo->prepare('SELECT * FROM urunler WHERE aktiflik = 1 AND kategori = :kategori LIMIT :sayfa_basina_urun_sayisi OFFSET :offset');
                     $sayfa_getir->bindValue(':kategori', $kategori, PDO::PARAM_STR);
                 }
                 $sayfa_getir->bindValue(':sayfa_basina_urun_sayisi', $sayfa_basina_urun_sayisi, PDO::PARAM_INT);
@@ -39,7 +39,7 @@ if (isset($_GET['islem'])) {
             case 'urun_detay':
                 $urun_id = $_GET['id'];
 
-                $detay_getir = $pdo->prepare('SELECT * FROM urunler WHERE urun_id = :urun_id LIMIT 1');
+                $detay_getir = $pdo->prepare('SELECT * FROM urunler WHERE aktiflik = 1 AND urun_id = :urun_id LIMIT 1');
                 $detay_getir->execute([':urun_id' => $urun_id]);
 
                 echo json_encode($detay_getir->fetch(PDO::FETCH_ASSOC));

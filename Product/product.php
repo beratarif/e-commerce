@@ -147,10 +147,15 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
             </a>
           </div>
         <?php else: ?>
-          <div class="text-center mt-5">
-            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="120" alt="No Product" >
-            <h5 class="text-uppercase text-muted mt-3">Bu kategori'de ürün bulunamadı</h5>
-          </div>
+
+
+
+          
+
+
+
+
+
         <?php endif; ?>
       </div>
     </div>
@@ -171,10 +176,11 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
         );
         const r = await response.json();
 
-        for (const u of r) {
-          // await bekle(125);
+        if (r.length > 0) {
+          for (const u of r) {
+            // await bekle(125);
 
-          product_holder.innerHTML += `
+            product_holder.innerHTML += `
         <div class="col-md-4 col-sm-6">
           <div class="card h-100 shadow-sm product-card" data-id="${u.urun_id}" style="cursor:pointer;">
             <img src="../${u.gorsel}" class="card-img-top" alt="Ürün Görseli"> 
@@ -188,12 +194,22 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
           </div>
         </div>
             `;
-        }
+          }
 
-        for (const urunKart of document.querySelectorAll(".product-card")) {
-          urunKart.querySelector(".sepete-ekle").onclick = () => {
-            sepeteEkle(urunKart.dataset.id);
-          };
+          for (const urunKart of document.querySelectorAll(".product-card")) {
+            urunKart.querySelector(".sepete-ekle").onclick = () => {
+              sepeteEkle(urunKart.dataset.id);
+            };
+          }
+        }
+        else {
+          product_holder.innerHTML +=
+          `
+          <div class="text-center mt-5">
+            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="120" alt="No Product">
+            <h5 class="text-uppercase text-muted mt-3">Bu kategoride ürün bulunamadı</h5>
+          </div>
+          `;
         }
       } catch (err) {
         console.error(`hata: ${err}`);
