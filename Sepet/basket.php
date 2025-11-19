@@ -30,6 +30,31 @@
     .sepet {
       cursor: pointer;
     }
+
+    .other-card img {
+      height: 170px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .other-card {
+      transition: .25s ease;
+      border-radius: 12px !important;
+      overflow: hidden;
+    }
+
+    .other-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+    }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: contain;
+      /* resim orantılı küçülür, boşluk kalabilir */
+      background-color: #f8f9fa;
+      /* arka plan boş kalırsa hoş durur */
+    }
   </style>
 </head>
 
@@ -78,6 +103,7 @@
     </div>
   </nav>
   <!-- SEPET -->
+
   <div class="container my-5">
     <h2 class="mb-4">🛒 Sepetim</h2>
 
@@ -106,18 +132,64 @@
             <p class="card-text d-flex justify-content-between fw-bold">
               <span>Toplam:</span> <span id="total">₺0</span>
             </p>
-            <button onclick="window.location.href='Payment/index.php';" class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
+            <button onclick="window.location.href='Payment/index.php';"
+              class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
           </div>
         </div>
       </div>
 
     </div>
   </div>
+  <section id="products" class="container my-5">
+    <div class="container my-5">
+      <h2 class="mb-4">Diğer Ürünler</h2>
+      <div id="product-holder" class="row g-4">
+        <!-- products are here -->
+      </div>
+    </div>
+
+  </section>
+
   <footer>
     <p>© 2025 Mağazam. Tüm hakları saklıdır.</p>
   </footer>
 
   <script>
+        async function urunGetir() {
+      const product_holder = document.getElementById("product-holder");
+
+      try {
+        const response = await fetch(`../backend/urun.php?islem=urunler&sayfa=1&kategori=yok`);
+
+        for (const u of await response.json()) {
+          product_holder.innerHTML += `
+            <div class="col-md-4 col-sm-6">
+          <div class="card h-100 shadow-sm product-card" data-id="${u.urun_id}" style="cursor:pointer;">
+            <img src="../${u.gorsel}" class="card-img-top" alt="Ürün Görseli"> 
+            <div class="card-body">
+              <h5 class="card-title">${u.ad}</h5>
+              <p class="card-text text-muted">${u.aciklama}</p>
+              <p class="fw-bold fs-5 mb-3">₺${u.fiyat}</p>
+
+              <button class="btn btn-primary w-100 sepete-ekle">Sepete Ekle</button>
+            </div>
+          </div>
+        </div>
+            `;
+        }
+
+        for (const urunKart of document.querySelectorAll(".product-card")) {
+          urunKart.querySelector(".sepete-ekle").onclick = () => {
+            sepeteEkle(urunKart.dataset.id);
+          };
+        }
+      } catch (err) {
+        console.error(`hata: ${err}`);
+      }
+    }
+
+
+
     async function sepetGetir() {
       const basket_holder = document.getElementById('basket-holder');
 
@@ -172,11 +244,11 @@
           document.getElementById("shipping").innerHTML = `₺${ara_toplam.toFixed(2)}`;
           document.getElementById("total").innerHTML = `₺${ara_toplam.toFixed(2)}`;
         }
-        
+
 
         document.querySelectorAll(".sepet").forEach(card => {
-          card.addEventListener("click", function(e) {
-            if (e.target.tagName === "BUTTON")return;
+          card.addEventListener("click", function (e) {
+            if (e.target.tagName === "BUTTON") return;
             window.location.href = "../ProductDetail/index.php?id=" + this.dataset.id;
           });
         });
@@ -218,7 +290,18 @@
 
     document.addEventListener("DOMContentLoaded", async () => {
       await sepetGetir();
+      await urunGetir();
     });
+        document.getElementById("product-holder").addEventListener("click", (e) => {
+      if (e.target.closest(".btn")) return;
+      const card = e.target.closest(".product-card");
+
+      if (card) {
+        window.location.href = `index.php?id=${card.dataset.id}`;
+      }
+    });
+
+
   </script>
 </body>
 
