@@ -132,8 +132,12 @@
             <p class="card-text d-flex justify-content-between fw-bold">
               <span>Toplam:</span> <span id="total">₺0</span>
             </p>
+<<<<<<< HEAD
             <button onclick="window.location.href='Payment/index.php';"
               class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
+=======
+            <button onclick="window.location.href='payment/payment.php';" class="btn btn-success w-100 mt-3 siparis-onayla">Siparişi Onayla</button>
+>>>>>>> 802f2393524be86c2d9f699563ce47fb18be463c
           </div>
         </div>
       </div>

@@ -160,7 +160,7 @@
       const product_holder = document.getElementById("product-holder");
 
       try {
-        const response = await fetch(`../backend/urun.php?islem=urunler&sayfa=2&kategori=yok`);
+        const response = await fetch(`../backend/urun.php?islem=urunler&sayfa=1&kategori=yok`);
 
         for (const u of await response.json()) {
           product_holder.innerHTML += `
@@ -225,7 +225,7 @@
         console.error(`hata: ${err}`);
       }
     }
-
+    
     document.addEventListener("DOMContentLoaded", async () => {
       await urunDetayGetir();
       await urunGetir();
