@@ -147,7 +147,7 @@ function SonrakiSayfayaGidebilirMi($sonraki_sayfa_urun_sayisi)
             </a>
           </div>
         <?php else: ?>
-          <!-- burası eğer o kategoride ürün bulunmaz ise görünecek kısım -->
+          <!-- burası eğer o kategoride ürün bulunmaz ise görünecek kısım --
         <?php endif; ?>
       </div>
     </div>
