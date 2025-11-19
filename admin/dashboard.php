@@ -67,7 +67,7 @@ if (!$giris_yapildi) {
       <div class="col-md-4 mb-3">
         <div class="card text-center shadow-sm p-3">
           <h5 class="card-title">Toplam Kullanıcı</h5>
-          <p class="card-text display-6" id="totalUsers">-</p>
+          <p class="card-text display-6 kullanicilar" id="totalUsers">-</p>
         </div>
       </div>
 
@@ -89,7 +89,25 @@ if (!$giris_yapildi) {
     </div>
   </div>
 
-  <script src="js/dashboard.js"></script>
+  <script>
+    async function dashboardGetir() {
+      const stats_row = document.getElementById("statsRow");
+
+      try {
+        const sonuc = await fetch("../backend/admin.php?islem=dashboard");
+        const dashboard = await sonuc.json();
+
+        stats_row.querySelector(".kullanicilar").innerHTML = `${dashboard.kullanicilar}`;
+
+      } catch (err) {
+        console.error(`hata: ${err}`);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      await dashboardGetir();
+    });
+  </script>
 </body>
 
 </html>
