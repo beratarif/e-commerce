@@ -21,7 +21,7 @@ if (!$giris_yapildi) {
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-    <a class="navbar-brand" href="dashboard.html">Admin Panel</a>
+    <a class="navbar-brand" href="dashboard.php">Admin Panel</a>
 
     <div class="ms-auto d-flex align-items-center gap-2">
       <button onclick="window.location.href='dashboard.php'" class="btn btn-outline-light btn-sm">

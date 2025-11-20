@@ -84,45 +84,42 @@
         </div>
     </nav>
 
-    <div class="container my-5 ">
-        <h3 class="mb-4 fw-bold">Ödeme Yöntemleri</h3>
-        <div class="payment-method row g-3">
-            <!-- Kredi Kartı Alanı -->
-            <div class="col-md-4">
-                <div class="payment-card" data-method="kredi">
-                    <i class="fas fa-credit-card fa-2x mb-2"></i>
-                    <h5>Kredi / Banka Kartı</h5>
-                    <p class="classtext-muted small">Visa, Mastercard desteklenir.</p>
-                </div>
-            </div>
+    <div class="container my-5">
+    <h3 class="mb-4 fw-bold">Ödeme Yöntemleri</h3>
+    <div class="payment-method row g-3">
 
-            <!-- Kapıda Ödeme -->
-            <div class="col-md-4">
-                <div class="payment-card" data-method="kapida">
-                    <i class="fas fa-truck fa-2x mb-2"></i>
-                    <h5>Kapıda Ödeme</h5>
-                    <p class="text-muted small">Teslimatta nakit ödeme.</p>
-                </div>
-            </div>
-
-            <!-- Havale / Eft yöntemi -->
-            <div class="col-md-4">
-                <div class="payment-card" data-method="eft">
-                    <i class="fas fa-university fa-2x mb-2"></i>
-                    <h5>Havale / EFT</h5>
-                    <p class="text-muted small">Bankalar arası güvenli transfer.</p>
-                </div>
+        <div class="col-md-4">
+            <div class="payment-card" data-method="Kredi Kartı" data-type="cc">
+                <i class="fas fa-credit-card fa-2x mb-2"></i>
+                <h5>Kredi Kartı</h5>
+                <p class="text-muted small">Visa, Mastercard desteklenir.</p>
             </div>
         </div>
-        <div class="mt-4" id="selectedMethodBox" style="display: none;">
-            <div class="alert alert-info">
-                Seçilen ödeme yöntemi: <strong id="selectedMethodText"></strong>
+
+        <div class="col-md-4">
+            <div class="payment-card" data-method="Kapıda Ödeme" data-type="cash">
+                <i class="fas fa-truck fa-2x mb-2"></i>
+                <h5>Kapıda Ödeme</h5>
+                <p class="text-muted small">Teslimatta nakit ödeme.</p>
             </div>
         </div>
-        <button id="confirmOrder" class="btn btn-success mt-4 w-100 fw-bold">
-            Siparişi onayla
-        </button>
+
+        <div class="col-md-4">
+            <div class="payment-card" data-method="Havale / EFT" data-type="transfer">
+                <i class="fas fa-university fa-2x mb-2"></i>
+                <h5>Havale / EFT</h5>
+                <p class="text-muted small">Bankalar arası transfer.</p>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Dinamik Form Alanı -->
+    <div id="paymentFormArea" class="mt-4"></div>
+
+    <button id="confirmOrder" class="btn btn-success mt-4 w-100 fw-bold">✔ Siparişi Onayla</button>
+</div>
+
     <script>
         const paymentCard = document.querySelectorAll(".payment-card");
         let selectedMethod = null;
@@ -153,7 +150,7 @@
                 });
                 return;
             }
-            
+
             sepetBosalt();
 
             Swal.fire({
@@ -165,7 +162,74 @@
                 color: "#1e4620",
             });
         });
+
+        /*
+        const cards = document.querySelectorAll(".payment-card");
+    const formArea = document.getElementById("paymentFormArea");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+
+            cards.forEach(c => c.classList.remove("active"));
+            card.classList.add("active");
+
+            const type = card.getAttribute("data-type");
+
+            // Formu değiştir
+            if (type === "cc") {
+                formArea.innerHTML = `
+                    <div class="card p-3 shadow-sm">
+                        <h5 class="fw-bold mb-3">Kredi Kartı Bilgileri</h5>
+
+                        <label>Kart Numarası</label>
+                        <input type="text" class="form-control mb-2" placeholder="#### #### #### ####">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Son Kullanma Tarihi</label>
+                                <input type="text" class="form-control mb-2" placeholder="AA/YY">
+                            </div>
+                            <div class="col-md-6">
+                                <label>CVC</label>
+                                <input type="text" class="form-control mb-2" placeholder="123">
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            else if (type === "cash") {
+                formArea.innerHTML = `
+                    <div class="card p-3 shadow-sm">
+                        <h5 class="fw-bold mb-2">Kapıda Ödeme</h5>
+                        <p class="text-muted">Teslimatta nakit veya pos cihazı ile ödeme yapabilirsiniz.</p>
+                    </div>
+                `;
+            }
+
+            else if (type === "transfer") {
+                formArea.innerHTML = `
+                    <div class="card p-3 shadow-sm">
+                        <h5 class="fw-bold mb-2">Havale / EFT Bilgileri</h5>
+                        <p class="text-muted small">Aşağıdaki IBAN'a ödeme yapabilirsiniz:</p>
+                        <div class="alert alert-secondary">
+                            <strong>TR 12 3456 7890 1234 5678 9000 01</strong><br>
+                            Alıcı: Örnek Şirket A.Ş.
+                        </div>
+                    </div>
+                `;
+            }
+
+        });
+    });
+
+    // Sipariş Onay Bildirimi
+    document.getElementById("confirmOrder").addEventListener("click", () => {
+        alert("🎉 Sipariş başarıyla onaylandı!");
+    });*/
     </script>
+
+    
 </body>
 
 </html>
